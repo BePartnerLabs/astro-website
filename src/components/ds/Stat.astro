@@ -1,0 +1,21 @@
+---
+interface Props {
+  value: string
+  label: string
+  delta?: string
+  deltaNegative?: boolean
+  sub?: string
+  class?: string
+}
+const { value, label, delta, deltaNegative = false, sub, class: className = '' } = Astro.props
+---
+<div class={`bpl-stat ${className}`}>
+  <span class="bpl-stat__value">{value}</span>
+  <span class="bpl-stat__label">{label}</span>
+  {delta && (
+    <span class={`bpl-stat__delta${deltaNegative ? ' bpl-stat__delta--negative' : ''}`}>
+      {delta}
+    </span>
+  )}
+  {sub && <span class="bpl-stat__sub">{sub}</span>}
+</div>
