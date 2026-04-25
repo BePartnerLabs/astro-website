@@ -4,8 +4,11 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 const { pathname } = Astro.url;
 const currentLocale = Astro.currentLocale ?? 'es';
 
-const esUrl = getRelativeLocaleUrl('es', pathname);
-const enUrl = getRelativeLocaleUrl('en', pathname);
+// Strip the locale prefix before building alternate URLs
+const strippedPath = pathname.replace(/^\/(es|en)(\/|$)/, '/') || '/';
+
+const esUrl = getRelativeLocaleUrl('es', strippedPath);
+const enUrl = getRelativeLocaleUrl('en', strippedPath);
 ---
 
 <nav aria-label="Language switcher">
