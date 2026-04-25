@@ -1,0 +1,8 @@
+{
+  "items": [
+    { "key": "services", "label": "Services", "href": "/en/services" },
+    { "key": "partnership", "label": "Partnership", "href": "/en/partnership" },
+    { "key": "cases", "label": "Cases", "href": "/en/cases" },
+    { "key": "about", "label": "About", "href": "/en/about" }
+  ]
+}
