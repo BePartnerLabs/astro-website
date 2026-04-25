@@ -1,0 +1,15 @@
+---
+interface Props {
+  elevated?: boolean
+  flush?: boolean
+  class?: string
+}
+const { elevated = false, flush = false, class: className = '' } = Astro.props
+const classes = [
+  'bpl-card',
+  elevated ? 'bpl-card--elevated' : '',
+  flush ? 'bpl-card--flush' : '',
+  className,
+].filter(Boolean).join(' ')
+---
+<div class={classes}><slot /></div>
