@@ -1,0 +1,23 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const { pathname } = Astro.url;
+const currentLocale = Astro.currentLocale ?? 'es';
+
+const esUrl = getRelativeLocaleUrl('es', pathname);
+const enUrl = getRelativeLocaleUrl('en', pathname);
+---
+
+<nav aria-label="Language switcher">
+  <a
+    href={esUrl}
+    aria-current={currentLocale === 'es' ? 'true' : undefined}
+    lang="es"
+  >ES</a>
+  <span aria-hidden="true"> / </span>
+  <a
+    href={enUrl}
+    aria-current={currentLocale === 'en' ? 'true' : undefined}
+    lang="en"
+  >EN</a>
+</nav>
