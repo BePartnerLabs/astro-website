@@ -1,0 +1,102 @@
+---
+import type { Translations } from '../../i18n/es'
+interface Props { t: Translations; lang: string }
+const { t, lang } = Astro.props
+const altLang = lang === 'es' ? 'en' : 'es'
+const altHref = lang === 'es' ? '/en' : '/'
+---
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href={lang === 'es' ? '/' : '/en'} class="site-header__logo" aria-label="Be Partner Labs">
+      <svg width="22" height="22" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M20 4C11.163 4 4 11.163 4 20s7.163 16 16 16 16-7.163 16-16S28.837 4 20 4zm0 6a10 10 0 1 1 0 20 10 10 0 0 1 0-20z" fill="currentColor" opacity=".25"/>
+        <circle cx="20" cy="20" r="6" fill="currentColor"/>
+      </svg>
+      <span class="site-header__wordmark">BePartner</span>
+      <span class="site-header__badge">LABS</span>
+    </a>
+    <nav class="site-header__nav" aria-label="Main">
+      <a href="#services">{t.nav.services}</a>
+      <a href="#partner">{t.nav.partnership}</a>
+      <a href="#founders">{t.nav.about}</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="site-header__actions">
+      <a href={altHref} class="site-header__lang" aria-label={`Switch to ${altLang.toUpperCase()}`}>{altLang.toUpperCase()}</a>
+      <a href="#contact" class="bpl-btn bpl-btn--primary bpl-btn--sm">{t.nav.cta}</a>
+    </div>
+  </div>
+</header>
+
+<style>
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bpl-bg) 85%, transparent);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--bpl-line);
+}
+.site-header__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--bpl-space-8);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bpl-space-6);
+}
+.site-header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--bpl-space-2);
+  text-decoration: none;
+  color: var(--bpl-mint);
+  flex-shrink: 0;
+}
+.site-header__wordmark {
+  font: 600 16px/1 var(--bpl-font-sans);
+  letter-spacing: -0.01em;
+  color: var(--bpl-ink);
+}
+.site-header__badge {
+  font: 600 10px/1 var(--bpl-font-mono);
+  letter-spacing: 0.16em;
+  padding: 3px 6px;
+  background: var(--bpl-mint);
+  color: var(--bpl-mint-ink);
+  border-radius: 3px;
+}
+.site-header__nav {
+  display: flex;
+  gap: var(--bpl-space-7);
+}
+.site-header__nav a {
+  font: 400 14px/1 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.site-header__nav a:hover { color: var(--bpl-ink); }
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--bpl-space-3);
+  flex-shrink: 0;
+}
+.site-header__lang {
+  font: 500 11px/1 var(--bpl-font-mono);
+  letter-spacing: 0.08em;
+  color: var(--bpl-ink-2);
+  text-decoration: none;
+  padding: 0 var(--bpl-space-2);
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--bpl-line);
+  border-radius: 6px;
+}
+.site-header__lang:hover { color: var(--bpl-ink); border-color: var(--bpl-ink-3); }
+</style>
