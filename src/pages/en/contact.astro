@@ -2,6 +2,7 @@
 export const prerender = true;
 import Layout from '../../layouts/Layout.astro'
 import type { Translations } from '../../i18n/es'
+import { altHref } from '../../i18n/index'
 import SiteHeader from '../../components/sections/SiteHeader.astro'
 import SectionContact from '../../components/sections/SectionContact.astro'
 import SiteFooter from '../../components/sections/SiteFooter.astro'
@@ -16,7 +17,7 @@ const page = pages.find(p => p.id === 'contact')
 const t = sections.find(s => s.id === 'contact')!.data as unknown as Translations
 ---
 <Layout title={page?.data.title ?? 'Contact — Be Partner Labs'} description={page?.data.description} lang={lang}>
-  <SiteHeader t={t} lang={lang} />
+  <SiteHeader t={t} lang={lang} altHref={altHref(page?.data.pathToTranslate ?? 'contact', lang)} />
   <main>
     <SectionContact t={t} />
   </main>

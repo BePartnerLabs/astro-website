@@ -3,10 +3,9 @@ import type { Translations } from '../../i18n/es'
 import BPLMark from '../ds/BPLMark.astro'
 import ThemeToggle from '../ds/ThemeToggle.astro'
 import { getCollection } from 'astro:content'
-interface Props { t: Translations; lang: string }
-const { t, lang } = Astro.props
+interface Props { t: Translations; lang: string; altHref: string }
+const { t, lang, altHref } = Astro.props
 const altLang = lang === 'es' ? 'en' : 'es'
-const altHref = lang === 'es' ? '/en' : '/'
 
 const navCollection = lang === 'es' ? await getCollection('navEs') : await getCollection('navEn')
 const navData = navCollection.find(e => e.id === 'main')?.data

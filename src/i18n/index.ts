@@ -11,3 +11,13 @@ export function useTranslations(locale: string | undefined) {
   const key = (locale ?? defaultLocale) as Locale;
   return translations[key] ?? translations[defaultLocale];
 }
+
+const routes: Record<string, Record<Locale, string>> = {
+  home:    { es: '/',        en: '/en' },
+  contact: { es: '/contact', en: '/en/contact' },
+};
+
+export function altHref(pathToTranslate: string, currentLang: string): string {
+  const altLang = currentLang === 'es' ? 'en' : 'es';
+  return routes[pathToTranslate]?.[altLang as Locale] ?? (altLang === 'en' ? '/en' : '/');
+}
