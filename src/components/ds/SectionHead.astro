@@ -1,0 +1,55 @@
+---
+
+interface Props {
+  eyebrow: string
+  title: string
+  intro: string
+}
+
+const { eyebrow, title, intro } = Astro.props
+---
+<div class="title__head">
+    <div class="title__eyebrow">{eyebrow}</div>
+    <h2 class="title__title" set:html={title}></h2>
+    <p class="title__intro">{intro}</p>
+</div>
+<style>
+.title__head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--bpl-space-16);
+  row-gap: var(--bpl-space-6);
+  margin-bottom: var(--bpl-space-14);
+  align-items: center;
+  container: title / inline-size;
+}
+.title__eyebrow {
+  grid-column: 1 / -1;
+  font: 600 var(--bpl-text-eyebrow)/1 var(--bpl-font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bpl-mint-deep);
+  margin-bottom: var(--bpl-space-5);
+}
+.title__title {
+  font: 600 var(--bpl-text-section-title)/1.05 var(--bpl-font-sans);
+  letter-spacing: -0.03em;
+  color: var(--bpl-ink);
+  margin: 0;
+  @container title (width <= 60ch) {
+    grid-column: 1 / -1;
+  }
+}
+.title__title :global(strong) {
+  color: var(--bpl-mint-deep);
+  font-weight: inherit;
+}
+.title__intro {
+  font: 400 var(--bpl-text-body-lg)/1.55 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  margin: 0;
+ @container title (width <= 60ch) {
+    grid-column: 1 / -1;
+  }
+}
+</style>

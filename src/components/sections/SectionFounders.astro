@@ -1,16 +1,13 @@
 ---
 import type { Translations } from '../../i18n/es'
+import SectionHead from '../ds/SectionHead.astro'
 interface Props { t: Translations }
 const { t } = Astro.props
 const s = t.founders
 ---
 <section class="founders" id="founders">
   <div class="founders__inner">
-    <div class="founders__head">
-      <div class="founders__eyebrow">{s.eyebrow}</div>
-      <h2 class="founders__title">{s.title}</h2>
-      <p class="founders__sub">{s.sub}</p>
-    </div>
+    <SectionHead eyebrow={s.eyebrow} title={s.title} intro={s.sub} />
     <ul class="founders__grid" role="list">
       {s.items.map(p => (
         <li class="founder-card">
@@ -36,9 +33,15 @@ const s = t.founders
   padding: var(--bpl-space-30) var(--bpl-space-8);
 }
 .founders__inner { max-width: 1280px; margin: 0 auto; }
-.founders__head { margin-bottom: var(--bpl-space-14); max-width: 720px; }
+.founders__head { 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--bpl-space-16);
+  margin-bottom: var(--bpl-space-14);
+  align-items: end;
+}
 .founders__eyebrow {
-  font: 600 11px/1 var(--bpl-font-mono);
+  font: 600 var(--bpl-text-eyebrow)/1 var(--bpl-font-mono);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--bpl-mint-deep);

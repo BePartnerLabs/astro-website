@@ -18,10 +18,14 @@ const { t } = Astro.props
   padding: var(--bpl-space-10) var(--bpl-space-8);
   border-top: 1px solid var(--bpl-line);
   border-bottom: 1px solid var(--bpl-line);
+  display: flex;
+  flex-direction: column;
+  gap: var(--bpl-space-8);
 }
 .logos__inner {
   max-width: 1280px;
   margin: 0 auto;
+  width: 100%;
   display: flex;
   align-items: center;
   gap: var(--bpl-space-10);
@@ -51,8 +55,12 @@ const { t } = Astro.props
   letter-spacing: 0.04em;
   color: var(--bpl-ink-3);
 }
+.logos__item--dim {
+  opacity: 0.5;
+}
 
-@container page (max-width: 680px) {
+@media (max-width: 680px) {
+  .logos { padding: var(--bpl-space-8) var(--bpl-space-5); }
   .logos__inner { flex-direction: column; align-items: flex-start; gap: var(--bpl-space-5); }
   .logos__label { max-width: 100%; }
   .logos__list { gap: var(--bpl-space-6); justify-content: flex-start; }

@@ -25,12 +25,28 @@ export const en: Translations = {
     lockins: 'retainer lock-ins',
   },
   logos: {
-    label: 'Embedded with teams at',
-    items: ['AURELIA', 'NORTH/CO', 'PRAXIS', 'STELLAR', 'KAIROS', 'MERIDIAN'],
+    label: 'Tech stack',
+    items: ['Astro', 'Next.js', 'Payload CMS', 'GSAP', 'Google Analytics', 'Looker Studio'],
+  },
+  integrations: {
+    label: 'We also integrate',
+    items: ['Resend', 'Salesforce', 'Odoo', 'HubSpot', 'Make', 'Zapier'],
+  },
+ai: {
+    eyebrow: '§ 03 · AI & Automation',
+    title: 'AI that <strong>delivers value.</strong>',
+    sub: 'No empty prompt engineering. We build agents, data pipelines and autonomous flows that actually automate decisions.',
+    items: [
+      { name: 'AI Apps & Agents', desc: 'GPTs, Claude Apps, autonomous agents with memory and context.' },
+      { name: 'AI Crawling & Extraction', desc: 'Pipelines to feed LLMs. Structured scraping.' },
+      { name: 'MCP Server & Tools', desc: 'We build MCP servers for your tools. Open-source to client.' },
+      { name: 'GEO & AI Search', desc: 'Optimization for ChatGPT Search, Perplexity, Gemini. Schema markup.' },
+      { name: 'AI Migration', desc: 'Migration of prompts, agents and flows to your infrastructure.' },
+    ],
   },
   services: {
-    eyebrow: '§ 01 · Services',
-    title: 'Six engagements. Each with standalone value.',
+eyebrow: '§ 01 · Services',
+    title: 'Six <strong>engagements</strong>. Each with <strong>standalone value</strong>.',
     intro: 'No bundled retainers. Every artifact is approvable on its own — so you can stop or continue with full information.',
     items: [
       { n: '01', name: 'Discovery Sprint', dur: '2 weeks · fixed scope', desc: 'Audience segmentation, customer journeys, IA, SEO strategy, KPI baseline, prioritized backlog. Each artifact approvable independently.', tags: ['Strategy', 'Research', 'IA'] },
@@ -42,14 +58,14 @@ export const en: Translations = {
     ],
   },
   testimonial: {
-    quote: "They told us we didn't need three of the six things we asked for. Then they shipped the other three in five weeks. That's the partnership.",
-    author: 'Catalina Vergara',
-    role: 'Head of Growth',
-    company: 'Aurelia Holdings',
-    metricLabel: 'Lead-to-MQL · 6 weeks',
-    metricValue: '4.8%',
-    metricDelta: '+182% ↑',
-    metricSub: 'From 1.7% baseline · co-owned dashboard',
+    quote: '',
+    author: '',
+    role: '',
+    company: '',
+    metricLabel: '',
+    metricValue: '',
+    metricDelta: '',
+    metricSub: '',
   },
   partner: {
     eyebrow: '§ 02 · The partner model',
@@ -60,9 +76,9 @@ export const en: Translations = {
     agency: ['Hours billed against scope', 'Retainer-driven dependency', 'Opaque deliverables, vague gates', 'Client as account'],
     model: ['Outcomes priced, not hours', 'Shared upside, sprint-based', 'Standalone-valuable artifacts', 'Client as co-owner'],
   },
-  process: {
+process: {
     eyebrow: '§ 04 · How we work',
-    title: 'A sprint-based laboratory.',
+    title: 'A <strong>sprint-based</strong> <strong>laboratory</strong>.',
     sub: "Two-week cycles. Public commitments. Co-owned dashboards. If something isn't working, we say it.",
     steps: [
       { n: 'W1', t: 'Frame', d: 'We define the one metric that matters. Everything else is noise.' },
@@ -72,9 +88,9 @@ export const en: Translations = {
       { n: 'W6', t: 'Decide', d: 'Continue, descope, or hand off. We tell you which — even when continuing pays us less.' },
     ],
   },
-  founders: {
-    eyebrow: '§ 03 · The founders',
-    title: '45+ years, embedded as partners.',
+founders: {
+    eyebrow: '§ 05 · The founders',
+    title: '45+ <strong>years</strong>, embedded as <strong>partners</strong>.',
     sub: 'No account managers. No layered teams. The three founders work directly with you, every sprint.',
     items: [
       { name: 'Jorge Saud', role: 'Co-Founder & Director of Technology', initials: 'JS', bio: 'Solutions Architect, 13+ years. Former CTO leading teams of 25+. 30+ projects shipped. Industrial-engineering rigor: bottleneck thinking, process optimization, zero over-engineering.', stat: '30+', statLabel: 'projects' },

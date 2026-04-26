@@ -22,13 +22,29 @@ export const es = {
     projects: 'proyectos entregados',
     lockins: 'retainers obligatorios',
   },
-  logos: {
-    label: 'Embebidos con equipos en',
-    items: ['AURELIA', 'NORTH/CO', 'PRAXIS', 'STELLAR', 'KAIROS', 'MERIDIAN'],
+logos: {
+    label: 'Stack tecnológico',
+    items: ['Astro', 'Next.js', 'Payload CMS', 'GSAP', 'Google Analytics', 'Looker Studio'],
+  },
+  integrations: {
+    label: 'También integramos',
+    items: ['Resend', 'Salesforce', 'Odoo', 'HubSpot', 'Make', 'Zapier'],
+  },
+ai: {
+    eyebrow: '§ 03 · AI & Automatización',
+    title: 'IA que <strong>entrega valor.</strong>',
+    sub: 'No prompt engineering vacío. Construimos agentes, pipelines de datos y flujos autonomous que realmente automatizan decisiones.',
+    items: [
+      { name: 'AI Apps & Agentes', desc: 'GPTs, Claude Apps, agentes autonomous con memoria y contexto.' },
+      { name: 'AI Crawling & Extraction', desc: 'Pipeline para alimentar LLMs propios o externos. scrapeo estructurado.' },
+      { name: 'MCP Server & Tools', desc: 'Creamos servers MCP para tus herramientas. Código abierto al cliente.' },
+      { name: 'GEO & AI Search', desc: 'Optimización para ChatGPT Search, Perplexity, Gemini. Schema markup y contenido.' },
+      { name: 'Migra IA', desc: 'Migración de prompts, agents y flows a tu infraestructura.私有.' },
+    ],
   },
   services: {
-    eyebrow: '§ 01 · Servicios',
-    title: 'Seis engagements. Cada uno con valor independiente.',
+eyebrow: '§ 01 · Servicios',
+    title: 'Seis <strong>engagements</strong>. Cada uno con <strong>valor independiente</strong>.',
     intro: 'Sin retainers empaquetados. Cada artefacto se aprueba por sí solo — para que puedas detener o continuar con información completa.',
     items: [
       { n: '01', name: 'Discovery Sprint', dur: '2 semanas · alcance fijo', desc: 'Segmentación de audiencia, customer journeys, IA, estrategia SEO, baseline de KPIs, backlog priorizado. Cada artefacto aprobable de forma independiente.', tags: ['Estrategia', 'Research', 'IA'] },
@@ -39,15 +55,15 @@ export const es = {
       { n: '06', name: 'Growth Partnership', dur: 'Retainer · upside compartido', desc: 'Engagement continuo basado en sprints con upside compartido. Crecemos cuando creces — no antes.', tags: ['Retainer', 'Growth'] },
     ],
   },
-  testimonial: {
-    quote: 'Nos dijeron que no necesitábamos tres de las seis cosas que pedimos. Y entregaron las otras tres en cinco semanas. Eso es el partnership.',
-    author: 'Catalina Vergara',
-    role: 'Head of Growth',
-    company: 'Aurelia Holdings',
-    metricLabel: 'Lead → MQL · 6 semanas',
-    metricValue: '4.8%',
-    metricDelta: '+182% ↑',
-    metricSub: 'Desde 1.7% baseline · panel co-gestionado',
+testimonial: {
+    quote: '',
+    author: '',
+    role: '',
+    company: '',
+    metricLabel: '',
+    metricValue: '',
+    metricDelta: '',
+    metricSub: '',
   },
   partner: {
     eyebrow: '§ 02 · El modelo partner',
@@ -60,7 +76,7 @@ export const es = {
   },
   process: {
     eyebrow: '§ 04 · Cómo trabajamos',
-    title: 'Un laboratorio basado en sprints.',
+    title: 'Un <strong>laboratorio</strong> basado en <strong>sprints</strong>.',
     sub: 'Ciclos de dos semanas. Compromisos públicos. Paneles co-gestionados. Si algo no funciona, lo decimos.',
     steps: [
       { n: 'S1', t: 'Encuadrar', d: 'Definimos la única métrica que importa. Todo lo demás es ruido.' },
@@ -70,9 +86,9 @@ export const es = {
       { n: 'S6', t: 'Decidir', d: 'Continuar, descopear, o handoff. Te decimos cuál — incluso cuando continuar nos paga menos.' },
     ],
   },
-  founders: {
-    eyebrow: '§ 03 · Los fundadores',
-    title: '45+ años, embebidos como partners.',
+founders: {
+    eyebrow: '§ 05 · Los fundadores',
+    title: '45+ <strong>años</strong>, embebidos como <strong>partners</strong>.',
     sub: 'Sin account managers. Sin capas de equipos. Los tres fundadores trabajan contigo directamente, cada sprint.',
     items: [
       { name: 'Jorge Saud', role: 'Co-Founder & Director de Tecnología', initials: 'JS', bio: 'Arquitecto de Soluciones, 13+ años. Ex-CTO liderando equipos de 25+. 30+ proyectos entregados. Rigor de ingeniería industrial: pensamiento de cuellos de botella, optimización de procesos, cero sobre-ingeniería.', stat: '30+', statLabel: 'proyectos' },

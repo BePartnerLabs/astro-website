@@ -6,7 +6,9 @@ import SiteHeader from '../../components/sections/SiteHeader.astro'
 import SectionHero from '../../components/sections/SectionHero.astro'
 import SectionLogos from '../../components/sections/SectionLogos.astro'
 import SectionServices from '../../components/sections/SectionServices.astro'
-import SectionTestimonial from '../../components/sections/SectionTestimonial.astro'
+import SectionIntegrations from '../../components/sections/SectionIntegrations.astro'
+import SectionAI from '../../components/sections/SectionAI.astro'
+// import SectionTestimonial from '../../components/sections/SectionTestimonial.astro'
 import SectionPartner from '../../components/sections/SectionPartner.astro'
 import SectionProcess from '../../components/sections/SectionProcess.astro'
 import SectionFounders from '../../components/sections/SectionFounders.astro'
@@ -21,13 +23,15 @@ const t = useTranslations(lang)
   <SiteHeader t={t} lang={lang} />
   <main>
     <SectionHero t={t} lang={lang} />
-    <SectionLogos t={t} />
+<SectionLogos t={t} />
     <SectionServices t={t} />
-    <SectionTestimonial t={t} />
+    <SectionAI t={t} />
+    {/* <SectionTestimonial t={t} /> */}
     <SectionPartner t={t} />
     <SectionProcess t={t} />
     <SectionFounders t={t} />
     <SectionFAQ t={t} />
+    <SectionIntegrations t={t} />
     <SectionFinalCTA t={t} lang={lang} />
   </main>
   <SiteFooter t={t} lang={lang} />

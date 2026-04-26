@@ -135,6 +135,39 @@
   * { box-sizing: border-box; }
   ::selection { background: var(--bpl-mint); color: var(--bpl-mint-ink); }
 
+h1, h2, h3, h4, h5, h6 { color: var(--bpl-ink); }
+  h1 :global(strong), h2 :global(strong), h3 :global(strong),
+  .section-title :global(strong), .section-header__title :global(strong) {
+    color: var(--bpl-mint-deep);
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--bpl-space-16);
+    margin-bottom: var(--bpl-space-14);
+    align-items: end;
+  }
+  .section-header__eyebrow {
+    font: 600 var(--bpl-text-eyebrow)/1 var(--bpl-font-mono);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bpl-mint-deep);
+    margin-bottom: var(--bpl-space-5);
+  }
+  .section-header__title {
+    --_fs: var(--bpl-text-section-title);
+    font: 600 var(--_fs)/1.05 var(--bpl-font-sans);
+    letter-spacing: -0.03em;
+    color: var(--bpl-ink);
+    margin: 0;
+  }
+  .section-header__sub {
+    font: 400 var(--bpl-text-body-lg)/1.55 var(--bpl-font-sans);
+    color: var(--bpl-ink-2);
+    margin: 0;
+  }
+
   .bpl-skip-link {
     position: absolute; top: -100px; left: 16px; z-index: 9999;
     padding: 8px 16px; background: var(--bpl-ink); color: var(--bpl-bg);

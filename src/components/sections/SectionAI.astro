@@ -1,0 +1,96 @@
+---
+import type { Translations } from '../../i18n/es'
+import SectionHead from '../ds/SectionHead.astro'
+interface Props { t: Translations }
+const { t } = Astro.props
+const s = t.ai
+---
+<section class="ai-section" id="ai">
+  <div class="ai-section__inner">
+    <SectionHead eyebrow={s.eyebrow} title={s.title} intro={s.sub} />
+    <ul class="ai-section__grid" role="list">
+      {s.items.map(item => (
+        <li class="ai-card">
+          <div class="ai-card__name">{item.name}</div>
+          <p class="ai-card__desc">{item.desc}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+.ai-section {
+  background: var(--bpl-bg);
+  padding: var(--bpl-space-30) var(--bpl-space-8);
+}
+.ai-section__inner { max-width: 1280px; margin: 0 auto; }
+.ai-section__head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--bpl-space-16);
+  margin-bottom: var(--bpl-space-14);
+  align-items: end;
+}
+.ai-section__eyebrow {
+  font: 600 var(--bpl-text-eyebrow)/1 var(--bpl-font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bpl-mint-deep);
+  margin-bottom: var(--bpl-space-5);
+}
+.ai-section__title {
+  --_fs: var(--bpl-text-section-title, clamp(2rem, 5.5cqi, 4rem));
+  font: 600 var(--_fs)/1.05 var(--bpl-font-sans);
+  letter-spacing: -0.03em;
+  color: var(--bpl-ink);
+  margin: 0;
+}
+.ai-section__sub {
+  font: 400 var(--bpl-text-body-lg)/1.55 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  margin: var(--bpl-space-6) 0 0;
+  max-width: 48ch;
+}
+.ai-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--bpl-space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ai-card {
+  background: var(--bpl-surface);
+  border: 1.5px solid var(--bpl-line);
+  border-radius: var(--bpl-radius-lg);
+  padding: var(--bpl-space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--bpl-space-3);
+  transition: border-color var(--bpl-dur-fast) var(--bpl-ease-std), box-shadow var(--bpl-dur-fast) var(--bpl-ease-std);
+}
+.ai-card:hover {
+  border-color: var(--bpl-mint);
+  box-shadow: var(--bpl-shadow-md);
+}
+.ai-card__name {
+  font: 600 var(--bpl-text-h4)/1.2 var(--bpl-font-sans);
+  letter-spacing: -0.015em;
+  color: var(--bpl-ink);
+}
+.ai-card__desc {
+  font: 400 var(--bpl-text-body)/1.55 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  margin: 0;
+}
+
+@container page (max-width: 900px) {
+  .ai-section__grid { grid-template-columns: repeat(2, 1fr); }
+  .ai-section__head { grid-template-columns: 1fr; gap: var(--bpl-space-6); }
+}
+@container page (max-width: 600px) {
+  .ai-section { padding: var(--bpl-space-16) var(--bpl-space-5); }
+  .ai-section__grid { grid-template-columns: 1fr; }
+}
+</style>
