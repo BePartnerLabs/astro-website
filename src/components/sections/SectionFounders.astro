@@ -45,7 +45,8 @@ const s = t.founders
   margin-bottom: var(--bpl-space-5);
 }
 .founders__title {
-  font: 600 var(--bpl-text-display)/1.05 var(--bpl-font-sans);
+  --_fs: var(--bpl-text-section-title, clamp(32px, 5.5cqi, 64px));
+  font: 600 var(--_fs)/1.05 var(--bpl-font-sans);
   letter-spacing: -0.03em;
   color: var(--bpl-ink);
   margin: 0;
