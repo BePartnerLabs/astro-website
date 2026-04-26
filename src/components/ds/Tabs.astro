@@ -1,0 +1,56 @@
+---
+interface Tab {
+  id: string
+  label: string
+  active?: boolean
+}
+interface Props {
+  tabs: Tab[]
+  class?: string
+}
+const { tabs, class: className = '' } = Astro.props
+const activeId = tabs.find(t => t.active)?.id ?? tabs[0]?.id
+---
+<div class={`bpl-tabs ${className}`} data-tabs>
+  <div class="bpl-tabs__list" role="tablist">
+    {tabs.map(tab => (
+      <button
+        class="bpl-tabs__tab"
+        role="tab"
+        id={`tab-${tab.id}`}
+        aria-controls={`panel-${tab.id}`}
+        aria-selected={tab.id === activeId ? 'true' : 'false'}
+        data-tab={tab.id}
+      >
+        {tab.label}
+      </button>
+    ))}
+  </div>
+  {tabs.map(tab => (
+    <div
+      class="bpl-tabs__panel"
+      role="tabpanel"
+      id={`panel-${tab.id}`}
+      aria-labelledby={`tab-${tab.id}`}
+      hidden={tab.id !== activeId}
+    >
+      <slot name={tab.id} />
+    </div>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll('[data-tabs]').forEach(tabs => {
+    tabs.querySelectorAll('[role="tab"]').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = (tab as HTMLElement).dataset.tab
+        tabs.querySelectorAll('[role="tab"]').forEach(t => {
+          t.setAttribute('aria-selected', t === tab ? 'true' : 'false')
+        })
+        tabs.querySelectorAll('[role="tabpanel"]').forEach(panel => {
+          ;(panel as HTMLElement).hidden = panel.id !== `panel-${target}`
+        })
+      })
+    })
+  })
+</script>

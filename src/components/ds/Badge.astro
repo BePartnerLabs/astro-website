@@ -1,0 +1,10 @@
+---
+interface Props {
+  tone?: 'neutral' | 'mint' | 'amber' | 'outline'
+  class?: string
+}
+const { tone = 'neutral', class: className = '' } = Astro.props
+const classes = ['bpl-badge', tone !== 'neutral' ? `bpl-badge--${tone}` : '', className]
+  .filter(Boolean).join(' ')
+---
+<span class={classes}><slot /></span>

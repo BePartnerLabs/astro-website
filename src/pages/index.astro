@@ -1,25 +1,11 @@
 ---
-import { useTranslations } from '../i18n/index';
-import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import Layout from '../layouts/Layout.astro'
+import { useTranslations } from '../i18n/index'
 
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations(Astro.currentLocale)
 ---
-
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Be Partner Labs</title>
-    <meta name="description" content={t.hero.eyebrow} />
-  </head>
-  <body>
-    <LanguageSwitcher />
+<Layout title="Be Partner Labs" description={t.hero.eyebrow}>
+  <main>
     <h1>{t.hero.eyebrow}</h1>
-    <a href="#">{t.hero.ctaPrimary}</a>
-    <footer>
-      <p>{t.footer.note}</p>
-      <p>{t.footer.rights}</p>
-    </footer>
-  </body>
-</html>
+  </main>
+</Layout>

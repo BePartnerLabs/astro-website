@@ -1,0 +1,46 @@
+/* BPL scroll-driven animations — pure CSS, zero JS */
+
+/* ── Scroll progress bar ── */
+#bpl-progress {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  height: 2px; width: 100%;
+  background: var(--bpl-mint);
+  transform-origin: left center;
+  animation: bpl-progress linear both;
+  animation-timeline: scroll(root);
+}
+@keyframes bpl-progress {
+  from { scale: 0 1; }
+  to   { scale: 1 1; }
+}
+
+/* ── Fade-in + slide-up on scroll entry ── */
+.bpl-animate {
+  animation: bpl-enter var(--bpl-dur-slow) var(--bpl-ease-out) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 35%;
+}
+@keyframes bpl-enter {
+  from { opacity: 0; translate: 0 24px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* ── Parallax on hero / banner elements ── */
+.bpl-parallax {
+  animation: bpl-parallax-move linear both;
+  animation-timeline: scroll(root);
+  animation-range: cover 0% cover 50%;
+}
+@keyframes bpl-parallax-move {
+  from { translate: 0 0; }
+  to   { translate: 0 -80px; }
+}
+
+/* ── Reduced motion: disable everything ── */
+@media (prefers-reduced-motion: reduce) {
+  #bpl-progress,
+  .bpl-animate,
+  .bpl-parallax {
+    animation: none;
+  }
+}

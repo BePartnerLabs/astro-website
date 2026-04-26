@@ -1,0 +1,26 @@
+---
+interface Props {
+  label?: string
+  hint?: string
+  placeholder?: string
+  value?: string
+  name?: string
+  type?: string
+  id?: string
+  class?: string
+}
+const { label, hint, placeholder, value, name, type = 'text', id, class: className = '' } = Astro.props
+const inputId = id ?? (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined)
+---
+<div class={`bpl-input-wrap ${className}`}>
+  {label && <label class="bpl-input-label" for={inputId}>{label}</label>}
+  <input
+    class="bpl-input"
+    id={inputId}
+    name={name}
+    type={type}
+    placeholder={placeholder}
+    value={value}
+  />
+  {hint && <span class="bpl-input-hint">{hint}</span>}
+</div>
