@@ -1,0 +1,188 @@
+---
+import type { Translations } from '../../i18n/es'
+import Button from '../ds/Button.astro'
+interface Props { t: Translations }
+const { t } = Astro.props
+const s = t.hero
+---
+<section class="hero">
+  <!-- Watermark -->
+  <div class="hero__watermark" aria-hidden="true">
+    <svg viewBox="0 0 40 40" fill="none"><path d="M20 4C11.163 4 4 11.163 4 20s7.163 16 16 16 16-7.163 16-16S28.837 4 20 4zm0 6a10 10 0 1 1 0 20 10 10 0 0 1 0-20z" fill="currentColor" opacity=".25"/><circle cx="20" cy="20" r="6" fill="currentColor"/></svg>
+  </div>
+
+  <div class="hero__inner">
+    <div class="hero__left">
+      <div class="hero__eyebrow">
+        <span class="hero__dot" aria-hidden="true"></span>
+        {s.eyebrow}
+      </div>
+      <h1 class="hero__heading">
+        {s.line1}<br/>{s.line2}{s.line2 ? ' ' : ''}<span class="hero__accent">{s.accent}</span>{s.line3 ? <><br/>{s.line3}</> : ''}
+      </h1>
+      <p class="hero__body">{s.body}</p>
+      <div class="hero__ctas">
+        <Button variant="primary" size="lg" href="#contact">{s.ctaPrimary}</Button>
+        <Button variant="secondary" size="lg" href="#services">{s.ctaSecondary}</Button>
+      </div>
+      <div class="hero__stats">
+        {[[`45+`, t.stats.years], [`30+`, t.stats.projects], [`0`, t.stats.lockins]].map(([n, l]) => (
+          <div class="hero__stat">
+            <span class="hero__stat-n">{n}</span>
+            <span class="hero__stat-l">{l}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="hero__card" aria-label="Live sprint dashboard example">
+      <div class="hero__card-head">
+        <div>
+          <div class="hero__card-eyebrow">{s.sprintLabel}</div>
+          <div class="hero__card-title">{s.sprintMetric}</div>
+        </div>
+        <span class="bpl-badge bpl-badge--mint">● Live</span>
+      </div>
+      <div class="hero__card-metric">
+        <span class="hero__card-value">4.8</span>
+        <span class="hero__card-unit">%</span>
+        <span class="hero__card-delta">+182% ↑</span>
+      </div>
+      <p class="hero__card-sub">{s.sprintSub}</p>
+      <svg class="hero__spark" viewBox="0 0 400 120" aria-hidden="true" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="var(--bpl-mint)" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="var(--bpl-mint)" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,95 L40,92 L80,88 L120,82 L160,78 L200,65 L240,58 L280,42 L320,30 L360,22 L400,12 L400,120 L0,120 Z" fill="url(#sparkFill)"/>
+        <path d="M0,95 L40,92 L80,88 L120,82 L160,78 L200,65 L240,58 L280,42 L320,30 L360,22 L400,12" fill="none" stroke="var(--bpl-mint-deep)" stroke-width="2"/>
+        <circle cx="400" cy="12" r="4" fill="var(--bpl-mint-deep)"/>
+      </svg>
+      <div class="hero__card-weeks">
+        {s.sprintWeeks.map(w => <span>{w}</span>)}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.hero {
+  background: var(--bpl-bg);
+  padding: var(--bpl-space-18) var(--bpl-space-8) var(--bpl-space-24);
+  position: relative;
+  overflow: hidden;
+}
+.hero__watermark {
+  position: absolute;
+  right: -160px;
+  top: -80px;
+  width: 680px;
+  height: 680px;
+  opacity: 0.04;
+  pointer-events: none;
+  color: var(--bpl-mint);
+}
+.hero__watermark svg { width: 100%; height: 100%; }
+.hero__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--bpl-space-14);
+  align-items: center;
+  position: relative;
+}
+.hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--bpl-space-2);
+  font: 600 11px/1 var(--bpl-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bpl-ink-3);
+  margin-bottom: var(--bpl-space-7);
+}
+.hero__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bpl-mint);
+  flex-shrink: 0;
+}
+.hero__heading {
+  font: 600 84px/1 var(--bpl-font-sans);
+  letter-spacing: -0.04em;
+  color: var(--bpl-ink);
+  margin: 0;
+}
+.hero__accent { color: var(--bpl-mint-deep); }
+.hero__body {
+  margin: var(--bpl-space-7) 0 0;
+  font: 400 19px/1.55 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  max-width: 520px;
+}
+.hero__ctas {
+  display: flex;
+  gap: var(--bpl-space-3);
+  margin-top: var(--bpl-space-9);
+}
+.hero__stats {
+  display: flex;
+  gap: var(--bpl-space-10);
+  margin-top: var(--bpl-space-12);
+  padding-top: var(--bpl-space-7);
+  border-top: 1px solid var(--bpl-line);
+}
+.hero__stat { display: flex; flex-direction: column; gap: var(--bpl-space-2); }
+.hero__stat-n { font: 600 32px/1 var(--bpl-font-sans); color: var(--bpl-ink); letter-spacing: -0.025em; }
+.hero__stat-l { font: 500 11px/1.4 var(--bpl-font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--bpl-ink-3); }
+
+/* Hero card */
+.hero__card {
+  background: var(--bpl-surface);
+  border: 1px solid var(--bpl-line);
+  border-radius: 16px;
+  padding: var(--bpl-space-8);
+  box-shadow: 0 8px 32px -8px color-mix(in srgb, var(--bpl-ink) 12%, transparent);
+}
+.hero__card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--bpl-space-5);
+}
+.hero__card-eyebrow {
+  font: 600 11px/1 var(--bpl-font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bpl-ink-3);
+  margin-bottom: var(--bpl-space-2);
+}
+.hero__card-title {
+  font: 600 22px/1.2 var(--bpl-font-sans);
+  letter-spacing: -0.015em;
+  color: var(--bpl-ink);
+}
+.hero__card-metric {
+  display: flex;
+  align-items: baseline;
+  gap: var(--bpl-space-3);
+  margin-bottom: var(--bpl-space-2);
+}
+.hero__card-value { font: 600 64px/1 var(--bpl-font-sans); color: var(--bpl-ink); letter-spacing: -0.03em; }
+.hero__card-unit { font: 500 22px/1 var(--bpl-font-sans); color: var(--bpl-ink-3); }
+.hero__card-delta { font: 500 13px/1 var(--bpl-font-mono); color: var(--bpl-mint-deep); margin-left: auto; }
+.hero__card-sub { font: 400 13px/1.5 var(--bpl-font-sans); color: var(--bpl-ink-3); margin: 0 0 var(--bpl-space-5); }
+.hero__spark { width: 100%; height: 120px; display: block; margin-bottom: var(--bpl-space-4); }
+.hero__card-weeks {
+  display: flex;
+  justify-content: space-between;
+  font: 500 10px/1 var(--bpl-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bpl-ink-4);
+}
+</style>

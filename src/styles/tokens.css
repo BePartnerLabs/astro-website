@@ -74,12 +74,18 @@
     --bpl-space-4:  calc(var(--bpl-space-unit) * 4);
     --bpl-space-5:  calc(var(--bpl-space-unit) * 5);
     --bpl-space-6:  calc(var(--bpl-space-unit) * 6);
+    --bpl-space-7:  calc(var(--bpl-space-unit) * 7);
     --bpl-space-8:  calc(var(--bpl-space-unit) * 8);
+    --bpl-space-9:  calc(var(--bpl-space-unit) * 9);
     --bpl-space-10: calc(var(--bpl-space-unit) * 10);
     --bpl-space-12: calc(var(--bpl-space-unit) * 12);
+    --bpl-space-14: calc(var(--bpl-space-unit) * 14);
     --bpl-space-16: calc(var(--bpl-space-unit) * 16);
+    --bpl-space-18: calc(var(--bpl-space-unit) * 18);
     --bpl-space-20: calc(var(--bpl-space-unit) * 20);
     --bpl-space-24: calc(var(--bpl-space-unit) * 24);
+    --bpl-space-30: calc(var(--bpl-space-unit) * 30);
+    --bpl-space-35: calc(var(--bpl-space-unit) * 35);
 
     /* ── Radius ── */
     --bpl-radius-xs:   4px;

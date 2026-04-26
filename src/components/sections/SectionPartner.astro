@@ -1,0 +1,117 @@
+---
+import type { Translations } from '../../i18n/es'
+interface Props { t: Translations }
+const { t } = Astro.props
+const s = t.partner
+---
+<section class="partner" id="partner">
+  <div class="partner__inner">
+    <div class="partner__left">
+      <div class="partner__eyebrow">{s.eyebrow}</div>
+      <h2 class="partner__title">{s.title}</h2>
+      <div class="partner__bar" aria-hidden="true"></div>
+      <p class="partner__sub">{s.sub}</p>
+    </div>
+    <div class="partner__compare">
+      <div class="partner__box partner__box--agency">
+        <div class="partner__box-label">{s.labelAgency}</div>
+        <ul role="list">
+          {s.agency.map(x => (
+            <li><span aria-hidden="true">—</span>{x}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="partner__box partner__box--partner">
+        <div class="partner__box-label">{s.labelPartner}</div>
+        <ul role="list">
+          {s.model.map(x => (
+            <li><span aria-hidden="true">✓</span>{x}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.partner {
+  background: var(--bpl-surface-2);
+  padding: var(--bpl-space-30) var(--bpl-space-8);
+  border-top: 1px solid var(--bpl-line);
+  border-bottom: 1px solid var(--bpl-line);
+}
+.partner__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--bpl-space-16);
+}
+.partner__eyebrow {
+  font: 600 11px/1 var(--bpl-font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bpl-mint-deep);
+  margin-bottom: var(--bpl-space-5);
+}
+.partner__title {
+  font: 600 64px/1.0 var(--bpl-font-sans);
+  letter-spacing: -0.035em;
+  color: var(--bpl-ink);
+  margin: 0;
+}
+.partner__bar {
+  width: 64px;
+  height: 3px;
+  background: var(--bpl-mint);
+  margin: var(--bpl-space-7) 0;
+}
+.partner__sub {
+  font: 400 18px/1.55 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  max-width: 460px;
+  margin: 0;
+}
+.partner__compare {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bpl-space-4);
+}
+.partner__box {
+  padding: var(--bpl-space-7);
+  background: var(--bpl-surface);
+  border: 1px solid var(--bpl-line);
+  border-radius: 12px;
+}
+.partner__box--agency { opacity: 0.75; }
+.partner__box--partner {
+  border-color: var(--bpl-mint);
+  box-shadow: 0 0 0 4px var(--bpl-mint-wash);
+}
+.partner__box-label {
+  font: 500 10px/1 var(--bpl-font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bpl-ink-3);
+  margin-bottom: var(--bpl-space-3);
+}
+.partner__box--partner .partner__box-label { color: var(--bpl-mint-deep); }
+.partner__box ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bpl-space-2);
+}
+.partner__box li {
+  font-size: 14px;
+  color: var(--bpl-ink-2);
+  display: flex;
+  gap: var(--bpl-space-2);
+  align-items: flex-start;
+}
+.partner__box li span { color: var(--bpl-ink-4); flex-shrink: 0; }
+.partner__box--partner li { color: var(--bpl-ink); font-weight: 500; }
+.partner__box--partner li span { color: var(--bpl-mint-deep); }
+</style>

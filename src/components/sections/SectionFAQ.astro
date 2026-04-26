@@ -1,0 +1,74 @@
+---
+import type { Translations } from '../../i18n/es'
+interface Props { t: Translations }
+const { t } = Astro.props
+const s = t.faq
+---
+<section class="faq" id="faq">
+  <div class="faq__inner">
+    <div class="faq__eyebrow">{s.eyebrow}</div>
+    <ul class="faq__list" role="list">
+      {s.items.map((item, i) => (
+        <li class="faq__item">
+          <details class="faq__details">
+            <summary class="faq__q">
+              <span>{item.q}</span>
+              <span class="faq__icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="faq__a">{item.a}</p>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+.faq {
+  background: var(--bpl-bg);
+  padding: var(--bpl-space-30) var(--bpl-space-8);
+}
+.faq__inner { max-width: 860px; margin: 0 auto; }
+.faq__eyebrow {
+  font: 600 11px/1 var(--bpl-font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bpl-mint-deep);
+  margin-bottom: var(--bpl-space-10);
+}
+.faq__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.faq__item { border-top: 1px solid var(--bpl-line); }
+.faq__item:last-child { border-bottom: 1px solid var(--bpl-line); }
+.faq__details { padding: var(--bpl-space-6) 0; }
+.faq__q {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--bpl-space-4);
+  cursor: pointer;
+  list-style: none;
+  font: 500 18px/1.3 var(--bpl-font-sans);
+  letter-spacing: -0.01em;
+  color: var(--bpl-ink);
+}
+.faq__q::-webkit-details-marker { display: none; }
+.faq__icon {
+  font: 400 20px/1 var(--bpl-font-sans);
+  color: var(--bpl-ink-3);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+details[open] .faq__icon { transform: rotate(45deg); }
+.faq__a {
+  font: 400 16px/1.6 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  margin: var(--bpl-space-4) 0 0;
+  max-width: 720px;
+}
+</style>

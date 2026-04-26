@@ -1,0 +1,104 @@
+---
+import type { Translations } from '../../i18n/es'
+interface Props { t: Translations }
+const { t } = Astro.props
+const s = t.testimonial
+---
+<section class="testimonial">
+  <div class="testimonial__inner">
+    <div class="testimonial__quote-wrap">
+      <blockquote class="testimonial__quote">"{s.quote}"</blockquote>
+      <footer class="testimonial__author">
+        <div class="testimonial__avatar" aria-hidden="true">
+          {s.author.split(' ').map(n => n[0]).join('')}
+        </div>
+        <div>
+          <div class="testimonial__name">{s.author}</div>
+          <div class="testimonial__role">{s.role} · {s.company}</div>
+        </div>
+      </footer>
+    </div>
+    <div class="testimonial__metric">
+      <div class="testimonial__metric-label">{s.metricLabel}</div>
+      <div class="testimonial__metric-value">
+        {s.metricValue}
+        <span class="testimonial__metric-delta">{s.metricDelta}</span>
+      </div>
+      <div class="testimonial__metric-sub">{s.metricSub}</div>
+    </div>
+  </div>
+</section>
+
+<style>
+.testimonial {
+  background: var(--bpl-surface-2);
+  padding: var(--bpl-space-20) var(--bpl-space-8);
+  border-top: 1px solid var(--bpl-line);
+  border-bottom: 1px solid var(--bpl-line);
+}
+.testimonial__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--bpl-space-16);
+  align-items: center;
+}
+.testimonial__quote {
+  font: 400 28px/1.4 var(--bpl-font-sans);
+  letter-spacing: -0.015em;
+  color: var(--bpl-ink);
+  margin: 0 0 var(--bpl-space-8);
+}
+.testimonial__author {
+  display: flex;
+  align-items: center;
+  gap: var(--bpl-space-4);
+}
+.testimonial__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--bpl-mint-wash);
+  color: var(--bpl-mint-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 14px/1 var(--bpl-font-sans);
+  border: 1px solid var(--bpl-mint);
+  flex-shrink: 0;
+}
+.testimonial__name { font: 600 14px/1.2 var(--bpl-font-sans); color: var(--bpl-ink); }
+.testimonial__role { font: 500 12px/1.4 var(--bpl-font-mono); letter-spacing: 0.04em; color: var(--bpl-ink-3); margin-top: 4px; }
+.testimonial__metric {
+  background: var(--bpl-surface);
+  border: 1px solid var(--bpl-line);
+  border-radius: 14px;
+  padding: var(--bpl-space-8);
+  min-width: 260px;
+}
+.testimonial__metric-label {
+  font: 600 11px/1 var(--bpl-font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bpl-ink-3);
+  margin-bottom: var(--bpl-space-3);
+}
+.testimonial__metric-value {
+  font: 600 52px/1 var(--bpl-font-sans);
+  letter-spacing: -0.03em;
+  color: var(--bpl-ink);
+  display: flex;
+  align-items: baseline;
+  gap: var(--bpl-space-3);
+  margin-bottom: var(--bpl-space-2);
+}
+.testimonial__metric-delta {
+  font: 500 13px/1 var(--bpl-font-mono);
+  color: var(--bpl-mint-deep);
+}
+.testimonial__metric-sub {
+  font: 400 12px/1.5 var(--bpl-font-sans);
+  color: var(--bpl-ink-3);
+}
+</style>

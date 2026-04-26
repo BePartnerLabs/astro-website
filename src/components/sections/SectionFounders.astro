@@ -1,0 +1,123 @@
+---
+import type { Translations } from '../../i18n/es'
+interface Props { t: Translations }
+const { t } = Astro.props
+const s = t.founders
+---
+<section class="founders" id="founders">
+  <div class="founders__inner">
+    <div class="founders__head">
+      <div class="founders__eyebrow">{s.eyebrow}</div>
+      <h2 class="founders__title">{s.title}</h2>
+      <p class="founders__sub">{s.sub}</p>
+    </div>
+    <ul class="founders__grid" role="list">
+      {s.items.map(p => (
+        <li class="founder-card">
+          <div class="founder-card__avatar" aria-label={p.name}>{p.initials}</div>
+          <div>
+            <div class="founder-card__name">{p.name}</div>
+            <div class="founder-card__role">{p.role}</div>
+          </div>
+          <p class="founder-card__bio">{p.bio}</p>
+          <div class="founder-card__stat">
+            <span class="founder-card__stat-n">{p.stat}</span>
+            <span class="founder-card__stat-l">{p.statLabel}</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+.founders {
+  background: var(--bpl-bg);
+  padding: var(--bpl-space-30) var(--bpl-space-8);
+}
+.founders__inner { max-width: 1280px; margin: 0 auto; }
+.founders__head { margin-bottom: var(--bpl-space-14); max-width: 720px; }
+.founders__eyebrow {
+  font: 600 11px/1 var(--bpl-font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bpl-mint-deep);
+  margin-bottom: var(--bpl-space-5);
+}
+.founders__title {
+  font: 600 56px/1.05 var(--bpl-font-sans);
+  letter-spacing: -0.03em;
+  color: var(--bpl-ink);
+  margin: 0;
+}
+.founders__sub {
+  font: 400 18px/1.55 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  margin: var(--bpl-space-6) 0 0;
+}
+.founders__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--bpl-space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.founder-card {
+  background: var(--bpl-surface);
+  border: 1px solid var(--bpl-line);
+  border-radius: 14px;
+  padding: var(--bpl-space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--bpl-space-4);
+}
+.founder-card__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  background: var(--bpl-mint-wash);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 22px/1 var(--bpl-font-sans);
+  color: var(--bpl-mint-deep);
+  letter-spacing: 0.02em;
+  border: 1px solid var(--bpl-mint);
+}
+.founder-card__name {
+  font: 600 20px/1.2 var(--bpl-font-sans);
+  letter-spacing: -0.015em;
+  color: var(--bpl-ink);
+}
+.founder-card__role {
+  font: 500 12px/1.4 var(--bpl-font-mono);
+  letter-spacing: 0.04em;
+  color: var(--bpl-ink-3);
+  margin-top: var(--bpl-space-1);
+}
+.founder-card__bio {
+  font: 400 14px/1.55 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  margin: 0;
+  flex: 1;
+}
+.founder-card__stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: var(--bpl-space-4);
+  border-top: 1px solid var(--bpl-line-soft);
+}
+.founder-card__stat-n {
+  font: 600 24px/1 var(--bpl-font-sans);
+  color: var(--bpl-ink);
+  letter-spacing: -0.02em;
+}
+.founder-card__stat-l {
+  font: 500 11px/1 var(--bpl-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bpl-ink-3);
+}
+</style>

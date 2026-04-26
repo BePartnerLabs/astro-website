@@ -1,0 +1,102 @@
+---
+import type { Translations } from '../../i18n/es'
+interface Props { t: Translations }
+const { t } = Astro.props
+const s = t.process
+---
+<section class="process" id="process">
+  <div class="process__inner">
+    <div class="process__head">
+      <div class="process__eyebrow">{s.eyebrow}</div>
+      <h2 class="process__title">{s.title}</h2>
+      <p class="process__sub">{s.sub}</p>
+    </div>
+    <ol class="process__steps" role="list">
+      {s.steps.map((step, i) => (
+        <li class="process__step">
+          <div class="process__step-node">{step.n}</div>
+          <div class="process__step-title">{step.t}</div>
+          <p class="process__step-desc">{step.d}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+.process {
+  background: var(--bpl-surface-2);
+  padding: var(--bpl-space-30) var(--bpl-space-8);
+  border-top: 1px solid var(--bpl-line);
+  border-bottom: 1px solid var(--bpl-line);
+}
+.process__inner { max-width: 1280px; margin: 0 auto; }
+.process__head { margin-bottom: var(--bpl-space-14); max-width: 720px; }
+.process__eyebrow {
+  font: 600 11px/1 var(--bpl-font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bpl-mint-deep);
+  margin-bottom: var(--bpl-space-5);
+}
+.process__title {
+  font: 600 56px/1.05 var(--bpl-font-sans);
+  letter-spacing: -0.03em;
+  color: var(--bpl-ink);
+  margin: 0;
+}
+.process__sub {
+  font: 400 18px/1.55 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  margin: var(--bpl-space-6) 0 0;
+}
+.process__steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+/* Connecting line */
+.process__steps::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background: var(--bpl-line);
+}
+.process__step {
+  padding-right: var(--bpl-space-5);
+  position: relative;
+}
+.process__step:last-child { padding-right: 0; }
+.process__step-node {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--bpl-bg);
+  border: 1.5px solid var(--bpl-mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 11px/1 var(--bpl-font-mono);
+  color: var(--bpl-mint-deep);
+  position: relative;
+  z-index: 1;
+}
+.process__step-title {
+  font: 600 18px/1.2 var(--bpl-font-sans);
+  letter-spacing: -0.01em;
+  color: var(--bpl-ink);
+  margin-top: var(--bpl-space-4);
+}
+.process__step-desc {
+  font: 400 14px/1.55 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  margin: var(--bpl-space-2) 0 0;
+}
+</style>

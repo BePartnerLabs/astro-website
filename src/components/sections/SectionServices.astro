@@ -1,0 +1,124 @@
+---
+import type { Translations } from '../../i18n/es'
+interface Props { t: Translations }
+const { t } = Astro.props
+const s = t.services
+---
+<section class="services" id="services">
+  <div class="services__inner">
+    <div class="services__head">
+      <div>
+        <div class="services__eyebrow">{s.eyebrow}</div>
+        <h2 class="services__title">{s.title}</h2>
+      </div>
+      <p class="services__intro">{s.intro}</p>
+    </div>
+    <ul class="services__grid" role="list">
+      {s.items.map(item => (
+        <li class="svc-card">
+          <div class="svc-card__top">
+            <span class="svc-card__n">{item.n}</span>
+            <span class="svc-card__dur">{item.dur}</span>
+          </div>
+          <div class="svc-card__name">{item.name}</div>
+          <p class="svc-card__desc">{item.desc}</p>
+          <div class="svc-card__tags">
+            {item.tags.map(tag => <span class="bpl-badge bpl-badge--outline">{tag}</span>)}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+.services {
+  background: var(--bpl-bg);
+  padding: var(--bpl-space-30) var(--bpl-space-8);
+}
+.services__inner { max-width: 1280px; margin: 0 auto; }
+.services__head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--bpl-space-16);
+  margin-bottom: var(--bpl-space-14);
+  align-items: end;
+}
+.services__eyebrow {
+  font: 600 11px/1 var(--bpl-font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bpl-mint-deep);
+  margin-bottom: var(--bpl-space-5);
+}
+.services__title {
+  font: 600 56px/1.05 var(--bpl-font-sans);
+  letter-spacing: -0.03em;
+  color: var(--bpl-ink);
+  margin: 0;
+}
+.services__intro {
+  font: 400 18px/1.55 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  margin: 0;
+}
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--bpl-space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.svc-card {
+  background: var(--bpl-surface);
+  border: 1px solid var(--bpl-line);
+  border-radius: 14px;
+  padding: var(--bpl-space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--bpl-space-4);
+  min-height: 280px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.svc-card:hover {
+  border-color: var(--bpl-mint);
+  box-shadow: 0 4px 16px -4px color-mix(in srgb, var(--bpl-ink) 10%, transparent);
+  transform: translateY(-2px);
+}
+.svc-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.svc-card__n {
+  font: 600 12px/1 var(--bpl-font-mono);
+  letter-spacing: 0.1em;
+  color: var(--bpl-ink-3);
+}
+.svc-card:hover .svc-card__n { color: var(--bpl-mint-deep); }
+.svc-card__dur {
+  font: 500 11px/1 var(--bpl-font-mono);
+  letter-spacing: 0.06em;
+  color: var(--bpl-ink-3);
+  text-align: right;
+}
+.svc-card__name {
+  font: 600 22px/1.2 var(--bpl-font-sans);
+  letter-spacing: -0.015em;
+  color: var(--bpl-ink);
+}
+.svc-card__desc {
+  font: 400 14px/1.55 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  margin: 0;
+  flex: 1;
+}
+.svc-card__tags {
+  display: flex;
+  gap: var(--bpl-space-2);
+  flex-wrap: wrap;
+  padding-top: var(--bpl-space-4);
+  border-top: 1px solid var(--bpl-line-soft);
+}
+</style>

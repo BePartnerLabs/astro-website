@@ -1,0 +1,81 @@
+---
+import type { Translations } from '../../i18n/es'
+interface Props { t: Translations }
+const { t } = Astro.props
+const s = t.finalCta
+---
+<section class="final-cta" id="contact">
+  <div class="final-cta__inner">
+    <div class="final-cta__watermark" aria-hidden="true">
+      <svg viewBox="0 0 40 40" fill="none"><path d="M20 4C11.163 4 4 11.163 4 20s7.163 16 16 16 16-7.163 16-16S28.837 4 20 4zm0 6a10 10 0 1 1 0 20 10 10 0 0 1 0-20z" fill="currentColor" opacity=".25"/><circle cx="20" cy="20" r="6" fill="currentColor"/></svg>
+    </div>
+    <div class="final-cta__content">
+      <div class="final-cta__eyebrow">{s.eyebrow}</div>
+      <h2 class="final-cta__title">{s.title}</h2>
+      <p class="final-cta__sub">{s.sub}</p>
+      <a href="mailto:hola@bepartnerlabs.com" class="final-cta__btn">{s.button}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+.final-cta {
+  background: var(--bpl-bg);
+  padding: var(--bpl-space-35) var(--bpl-space-8);
+}
+.final-cta__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: var(--bpl-ink);
+  color: var(--bpl-bg);
+  border-radius: 20px;
+  padding: var(--bpl-space-20) var(--bpl-space-16);
+  position: relative;
+  overflow: hidden;
+}
+.final-cta__watermark {
+  position: absolute;
+  right: -80px;
+  bottom: -80px;
+  width: 420px;
+  height: 420px;
+  opacity: 0.18;
+  color: var(--bpl-mint);
+  pointer-events: none;
+}
+.final-cta__watermark svg { width: 100%; height: 100%; }
+.final-cta__content { position: relative; max-width: 640px; }
+.final-cta__eyebrow {
+  font: 600 11px/1 var(--bpl-font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bpl-mint);
+  margin-bottom: var(--bpl-space-6);
+}
+.final-cta__title {
+  font: 600 64px/1.0 var(--bpl-font-sans);
+  letter-spacing: -0.035em;
+  margin: 0;
+  color: inherit;
+}
+.final-cta__sub {
+  font: 400 18px/1.55 var(--bpl-font-sans);
+  color: color-mix(in srgb, var(--bpl-bg) 75%, transparent);
+  margin: var(--bpl-space-7) 0 var(--bpl-space-9);
+  max-width: 540px;
+}
+.final-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 var(--bpl-space-7);
+  background: var(--bpl-mint);
+  color: var(--bpl-mint-ink);
+  border-radius: 10px;
+  font: 500 16px/1 var(--bpl-font-sans);
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.final-cta__btn:hover { opacity: 0.9; }
+</style>
