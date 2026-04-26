@@ -16,10 +16,10 @@ const altHref = lang === 'es' ? '/en' : '/'
     </a>
 
     <nav class="site-header__nav" aria-label="Main">
-      <a href="#services">{t.nav.services}</a>
-      <a href="#partner">{t.nav.partnership}</a>
-      <a href="#founders">{t.nav.about}</a>
-      <a href="#faq">FAQ</a>
+      <a href="#services" data-nav-link>{t.nav.services}</a>
+      <a href="#partner"  data-nav-link>{t.nav.partnership}</a>
+      <a href="#founders" data-nav-link>{t.nav.about}</a>
+      <a href="#faq"      data-nav-link>FAQ</a>
     </nav>
 
     <div class="site-header__actions">
@@ -119,8 +119,29 @@ const altHref = lang === 'es' ? '/en' : '/'
   color: var(--bpl-ink-2);
   text-decoration: none;
   transition: color 0.15s;
+  position: relative;
+}
+.site-header__nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--bpl-mint);
+  border-radius: 999px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .site-header__nav a:hover { color: var(--bpl-ink); }
+:global(.site-header__nav a.is-active) {
+  color: var(--bpl-ink);
+  font-weight: 500;
+}
+:global(.site-header__nav a.is-active)::after {
+  transform: scaleX(1);
+}
 .site-header__actions {
   display: flex;
   align-items: center;
@@ -317,4 +338,24 @@ const altHref = lang === 'es' ? '/en' : '/'
   backdrop.addEventListener('click', close)
   drawer.querySelectorAll('.nav-drawer__link').forEach(l => l.addEventListener('click', close))
   document.addEventListener('keydown', e => e.key === 'Escape' && close())
+
+  // ── Active nav link via IntersectionObserver ──
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]')
+  const sectionIds = [...navLinks].map(a => a.getAttribute('href')!.slice(1))
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[]
+
+  const setActive = (id: string) => {
+    navLinks.forEach(a => {
+      const isActive = a.getAttribute('href') === `#${id}`
+      a.classList.toggle('is-active', isActive)
+    })
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id)
+    })
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 })
+
+  sections.forEach(s => observer.observe(s))
 </script>
