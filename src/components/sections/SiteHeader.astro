@@ -15,20 +15,61 @@ const altHref = lang === 'es' ? '/en' : '/'
       <span class="site-header__wordmark">BePartner</span>
       <span class="site-header__badge">LABS</span>
     </a>
+
+    <!-- Desktop nav -->
     <nav class="site-header__nav" aria-label="Main">
       <a href="#services">{t.nav.services}</a>
       <a href="#partner">{t.nav.partnership}</a>
       <a href="#founders">{t.nav.about}</a>
       <a href="#faq">FAQ</a>
     </nav>
+
     <div class="site-header__actions">
       <a href={altHref} class="site-header__lang" aria-label={`Switch to ${altLang.toUpperCase()}`}>{altLang.toUpperCase()}</a>
       <a href="#contact" class="bpl-btn bpl-btn--primary bpl-btn--sm">{t.nav.cta}</a>
     </div>
+
+    <!-- Hamburger (mobile only) -->
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
   </div>
 </header>
 
+<!-- Mobile drawer -->
+<div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+<nav class="nav-drawer" id="mobile-drawer" aria-label="Mobile menu" aria-hidden="true">
+  <div class="nav-drawer__head">
+    <span class="nav-drawer__logo">
+      <svg width="18" height="18" viewBox="0 0 40 40" fill="none" aria-hidden="true" style="color:var(--bpl-mint)">
+        <path d="M20 4C11.163 4 4 11.163 4 20s7.163 16 16 16 16-7.163 16-16S28.837 4 20 4zm0 6a10 10 0 1 1 0 20 10 10 0 0 1 0-20z" fill="currentColor" opacity=".25"/>
+        <circle cx="20" cy="20" r="6" fill="currentColor"/>
+      </svg>
+      BePartner<span class="nav-drawer__badge">LABS</span>
+    </span>
+    <button class="nav-drawer__close" aria-label="Close menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <line x1="2" y1="2" x2="16" y2="16"/>
+        <line x1="16" y1="2" x2="2" y2="16"/>
+      </svg>
+    </button>
+  </div>
+  <ul class="nav-drawer__links" role="list">
+    <li><a href="#services" class="nav-drawer__link">{t.nav.services}</a></li>
+    <li><a href="#partner" class="nav-drawer__link">{t.nav.partnership}</a></li>
+    <li><a href="#founders" class="nav-drawer__link">{t.nav.about}</a></li>
+    <li><a href="#faq" class="nav-drawer__link">FAQ</a></li>
+  </ul>
+  <div class="nav-drawer__footer">
+    <a href={altHref} class="nav-drawer__lang">{altLang.toUpperCase()}</a>
+    <a href="#contact" class="bpl-btn bpl-btn--primary" style="width:100%;justify-content:center">{t.nav.cta}</a>
+  </div>
+</nav>
+
 <style>
+/* ── Header ── */
 .site-header {
   position: sticky;
   top: 0;
@@ -100,9 +141,201 @@ const altHref = lang === 'es' ? '/en' : '/'
 }
 .site-header__lang:hover { color: var(--bpl-ink); border-color: var(--bpl-ink-3); }
 
+/* ── Hamburger button ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1px solid var(--bpl-line);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+.nav-toggle__bar {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--bpl-ink);
+  border-radius: 2px;
+  transform-origin: center;
+  transition:
+    transform 0.3s var(--bpl-ease-out),
+    opacity 0.2s,
+    width 0.3s var(--bpl-ease-out);
+}
+/* Open state — bars animate to X */
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ── Backdrop ── */
+.nav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: color-mix(in srgb, var(--bpl-ink) 50%, transparent);
+  opacity: 0;
+  transition: opacity 0.3s var(--bpl-ease-out);
+}
+.nav-backdrop.is-open {
+  opacity: 1;
+}
+
+/* ── Drawer ── */
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 70;
+  width: min(320px, 85vw);
+  background: var(--bpl-bg);
+  border-left: 1px solid var(--bpl-line);
+  display: flex;
+  flex-direction: column;
+  padding: var(--bpl-space-6);
+  gap: var(--bpl-space-6);
+  transform: translateX(100%);
+  transition: transform 0.35s var(--bpl-ease-out);
+  /* hidden from AT when closed */
+}
+.nav-drawer.is-open {
+  transform: translateX(0);
+}
+.nav-drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-drawer__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--bpl-space-2);
+  font: 600 15px/1 var(--bpl-font-sans);
+  letter-spacing: -0.01em;
+  color: var(--bpl-ink);
+}
+.nav-drawer__badge {
+  font: 600 9px/1 var(--bpl-font-mono);
+  letter-spacing: 0.16em;
+  padding: 2px 5px;
+  background: var(--bpl-mint);
+  color: var(--bpl-mint-ink);
+  border-radius: 3px;
+  margin-left: var(--bpl-space-1);
+}
+.nav-drawer__close {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--bpl-line);
+  border-radius: 8px;
+  color: var(--bpl-ink-2);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.nav-drawer__close:hover { color: var(--bpl-ink); border-color: var(--bpl-ink-3); }
+
+.nav-drawer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-top: 1px solid var(--bpl-line);
+  padding-top: var(--bpl-space-4);
+}
+.nav-drawer__link {
+  display: block;
+  padding: var(--bpl-space-4) 0;
+  font: 500 18px/1 var(--bpl-font-sans);
+  letter-spacing: -0.01em;
+  color: var(--bpl-ink-2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--bpl-line-soft);
+  transition: color 0.15s, padding-left 0.2s var(--bpl-ease-out);
+}
+.nav-drawer__link:hover {
+  color: var(--bpl-ink);
+  padding-left: var(--bpl-space-2);
+}
+.nav-drawer__footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bpl-space-3);
+  padding-top: var(--bpl-space-4);
+  border-top: 1px solid var(--bpl-line);
+}
+.nav-drawer__lang {
+  font: 500 11px/1 var(--bpl-font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bpl-ink-3);
+  text-decoration: none;
+  text-align: center;
+}
+.nav-drawer__lang:hover { color: var(--bpl-ink); }
+
+/* ── Responsive: show hamburger, hide desktop nav ── */
 @container page (max-width: 680px) {
   .site-header__inner { padding: 0 var(--bpl-space-5); }
   .site-header__nav { display: none; }
-  .site-header__lang { display: none; }
+  .site-header__actions { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-backdrop { display: block; }
 }
 </style>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement
+  const drawer = document.getElementById('mobile-drawer')!
+  const backdrop = document.getElementById('nav-backdrop')!
+  const closeBtn = drawer.querySelector('.nav-drawer__close')!
+  const drawerLinks = drawer.querySelectorAll('.nav-drawer__link')
+
+  function openDrawer() {
+    toggle.setAttribute('aria-expanded', 'true')
+    drawer.classList.add('is-open')
+    drawer.removeAttribute('aria-hidden')
+    backdrop.classList.add('is-open')
+    document.body.style.overflow = 'hidden'
+  }
+
+  function closeDrawer() {
+    toggle.setAttribute('aria-expanded', 'false')
+    drawer.classList.remove('is-open')
+    drawer.setAttribute('aria-hidden', 'true')
+    backdrop.classList.remove('is-open')
+    document.body.style.overflow = ''
+  }
+
+  toggle.addEventListener('click', () => {
+    toggle.getAttribute('aria-expanded') === 'true' ? closeDrawer() : openDrawer()
+  })
+  closeBtn.addEventListener('click', closeDrawer)
+  backdrop.addEventListener('click', closeDrawer)
+  drawerLinks.forEach(link => link.addEventListener('click', closeDrawer))
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer()
+  })
+</script>
