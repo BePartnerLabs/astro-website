@@ -135,11 +135,11 @@ const altHref = lang === 'es' ? '/en' : '/'
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .site-header__nav a:hover { color: var(--bpl-ink); }
-:global(.site-header__nav a.is-active) {
+.site-header__nav :global(a.is-active) {
   color: var(--bpl-ink);
   font-weight: 500;
 }
-:global(.site-header__nav a.is-active)::after {
+.site-header__nav :global(a.is-active)::after {
   transform: scaleX(1);
 }
 .site-header__actions {
