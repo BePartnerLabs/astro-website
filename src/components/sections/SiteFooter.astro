@@ -1,15 +1,13 @@
 ---
 import type { Translations } from '../../i18n/es'
+import BPLMark from '../ds/BPLMark.astro'
 interface Props { t: Translations; lang: string }
 const { t, lang } = Astro.props
 ---
 <footer class="site-footer">
   <div class="site-footer__inner">
     <div class="site-footer__brand">
-      <svg width="20" height="20" viewBox="0 0 40 40" fill="none" aria-hidden="true" style="color:var(--bpl-mint)">
-        <path d="M20 4C11.163 4 4 11.163 4 20s7.163 16 16 16 16-7.163 16-16S28.837 4 20 4zm0 6a10 10 0 1 1 0 20 10 10 0 0 1 0-20z" fill="currentColor" opacity=".25"/>
-        <circle cx="20" cy="20" r="6" fill="currentColor"/>
-      </svg>
+      <BPLMark size={20} />
       <span class="site-footer__wordmark">BePartner</span>
       <span class="site-footer__badge">LABS</span>
       <span class="site-footer__note">{t.footer.note}</span>
