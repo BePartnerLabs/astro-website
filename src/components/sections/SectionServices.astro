@@ -1,11 +1,14 @@
 ---
 import type { Translations } from '../../i18n/es'
 import SectionHead from '../ds/SectionHead.astro'
+import { buildServiceSchema } from '../../utils/schema'
 interface Props { t: Translations }
 const { t } = Astro.props
 const s = t.services
+const schema = buildServiceSchema(s.items)
 ---
 <section class="services" id="services">
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   <div class="services__inner">
     <SectionHead eyebrow={s.eyebrow} title={s.title} intro={s.intro} />
     <ul class="services__grid" role="list">

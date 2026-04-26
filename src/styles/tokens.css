@@ -12,6 +12,7 @@
 
 @layer tokens {
   :root {
+    interpolate-size: allow-keywords;
     color-scheme: light dark;
 
     /* ── Base color pairs ── */

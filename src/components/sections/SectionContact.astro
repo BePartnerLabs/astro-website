@@ -2,14 +2,17 @@
 import type { Translations } from '../../i18n/es'
 import Input from '../ds/Input.astro'
 import Textarea from '../ds/Textarea.astro'
+import { buildContactPageSchema } from '../../utils/schema'
 
 interface Props { t: Translations }
 const { t } = Astro.props
 const s = t.contact
 const formId = 'contact-form'
 const errorId = 'contact-form-error'
+const schema = buildContactPageSchema()
 ---
 <section class="contact-form-section" aria-labelledby="contact-form-title">
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   <div class="contact-form-section__inner">
     <div class="contact-form-section__header">
       <div class="bpl-eyebrow">{s.eyebrow}</div>

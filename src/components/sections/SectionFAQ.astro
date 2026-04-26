@@ -1,21 +1,24 @@
 ---
 import type { Translations } from '../../i18n/es'
+import { buildFAQPageSchema } from '../../utils/schema'
 interface Props { t: Translations }
 const { t } = Astro.props
 const s = t.faq
+const schema = buildFAQPageSchema(s.items)
 ---
 <section class="faq" id="faq">
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   <div class="faq__inner">
     <div class="faq__eyebrow">{s.eyebrow}</div>
     <ul class="faq__list" role="list">
       {s.items.map((item, i) => (
         <li class="faq__item">
-          <details class="faq__details">
+          <details name="faq-group" class="faq__details">
             <summary class="faq__q">
               <span>{item.q}</span>
               <span class="faq__icon" aria-hidden="true">+</span>
             </summary>
-            <p class="faq__a">{item.a}</p>
+            <p class="faq__text">{item.a}</p>
           </details>
         </li>
       ))}
@@ -62,14 +65,35 @@ const s = t.faq
   font: 400 20px/1 var(--bpl-font-sans);
   color: var(--bpl-ink-3);
   flex-shrink: 0;
-  transition: transform 0.2s;
+  transition: transform 0.25s var(--bpl-ease-out);
 }
 details[open] .faq__icon { transform: rotate(45deg); }
-.faq__a {
+.faq__details {
+  interpolate-size: allow-keywords;
+}
+.faq__text {
   font: 400 var(--bpl-text-body-lg)/1.6 var(--bpl-font-sans);
   color: var(--bpl-ink-2);
-  margin: var(--bpl-space-4) 0 0;
+  margin-top: var(--bpl-space-4);
   max-width: 720px;
+  display: block;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: height 0.35s var(--bpl-ease-out), opacity 0.3s, display 0.35s allow-discrete;
+}
+details[open] .faq__text {
+  height: auto;
+  opacity: 1;
+}
+@starting-style {
+  details[open] .faq__text {
+    height: 0;
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq__text, .faq__icon { transition: none; }
 }
 
 @container page (max-width: 680px) {

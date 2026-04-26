@@ -1,10 +1,21 @@
 ---
 import type { Translations } from '../../i18n/es'
+import { siteUrl } from '../../utils/schema'
 interface Props { t: Translations }
 const { t } = Astro.props
 const s = t.testimonial
+const hasData = s.quote && s.author
+const schema = hasData ? {
+  '@context': 'https://schema.org',
+  '@type': 'Review',
+  reviewRating: { '@type': 'Rating', ratingValue: '5' },
+  author: { '@type': 'Person', name: s.author },
+  reviewBody: s.quote,
+  itemReviewed: { '@type': 'Organization', name: 'Be Partner Labs', url: siteUrl },
+} : null
 ---
 <section class="testimonial">
+  {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
   <div class="testimonial__inner">
     <div class="testimonial__quote-wrap">
       <blockquote class="testimonial__quote">"{s.quote}"</blockquote>
