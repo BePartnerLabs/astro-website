@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 import Layout from '../../layouts/Layout.astro'
-import { useTranslations } from '../../i18n/index'
+import type { Translations } from '../../i18n/es'
 import SiteHeader from '../../components/sections/SiteHeader.astro'
 import SectionHero from '../../components/sections/SectionHero.astro'
 import SectionLogos from '../../components/sections/SectionLogos.astro'
@@ -15,11 +15,17 @@ import SectionFounders from '../../components/sections/SectionFounders.astro'
 import SectionFAQ from '../../components/sections/SectionFAQ.astro'
 import SectionFinalCTA from '../../components/sections/SectionFinalCTA.astro'
 import SiteFooter from '../../components/sections/SiteFooter.astro'
+import { getCollection } from 'astro:content'
 
 const lang = Astro.currentLocale ?? 'en'
-const t = useTranslations(lang)
+const [pages, sections] = await Promise.all([
+  getCollection('pagesEn'),
+  getCollection('sectionsEn'),
+])
+const page = pages.find(p => p.id === 'home')
+const t = sections.find(s => s.id === 'home')!.data as unknown as Translations
 ---
-<Layout title="Be Partner Labs — Web performance partnerships" description={t.hero.eyebrow} lang={lang}>
+<Layout title={page?.data.title ?? 'Be Partner Labs'} description={page?.data.description} lang={lang}>
   <SiteHeader t={t} lang={lang} />
   <main>
     <SectionHero t={t} lang={lang} />

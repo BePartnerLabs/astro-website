@@ -14,9 +14,23 @@ const navSchema = z.object({
     label: z.string(),
     href: z.string(),
   })),
+  cta: z.object({
+    label: z.string(),
+    href: z.string(),
+  }),
 });
 
+const sectionsSchema = z.record(z.string(), z.any());
+
 export const collections = {
+  sectionsEs: defineCollection({
+    loader: glob({ base: 'src/content/sections/es', pattern: '**/*.json' }),
+    schema: sectionsSchema,
+  }),
+  sectionsEn: defineCollection({
+    loader: glob({ base: 'src/content/sections/en', pattern: '**/*.json' }),
+    schema: sectionsSchema,
+  }),
   pagesEs: defineCollection({
     loader: glob({ base: 'src/content/pages/es', pattern: '**/*.(md|mdx)' }),
     schema: pageSchema,

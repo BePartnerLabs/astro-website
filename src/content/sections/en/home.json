@@ -1,0 +1,117 @@
+{
+  "hero": {
+    "eyebrow": "Web partnership · Sprint-based · Shared upside",
+    "headingHtml": "We turn web<br/>presence into a<br/><strong>business engine.</strong>",
+    "body": "Focused sprints. Shared ownership. Zero black boxes. We don't sell hours, we don't invent work — and if you don't need us, we'll tell you.",
+    "ctaPrimary": "Book a discovery sprint",
+    "ctaSecondary": "How we work",
+    "sprintLabel": "Sprint 04 · Conversion",
+    "sprintMetric": "Lead-to-MQL rate",
+    "sprintSub": "From 1.7% baseline · 6-week sprint · co-owned dashboard",
+    "sprintWeeks": ["Wk 1", "Wk 2", "Wk 3", "Wk 4", "Wk 5", "Wk 6"]
+  },
+  "stats": {
+    "years": "combined years",
+    "projects": "projects delivered",
+    "lockins": "mandatory retainers"
+  },
+  "logos": {
+    "label": "Tech stack",
+    "items": ["Astro", "Next.js", "Payload CMS", "GSAP", "Google Analytics", "Looker Studio"]
+  },
+  "integrations": {
+    "label": "We also integrate",
+    "items": ["Resend", "Salesforce", "Odoo", "HubSpot", "Make", "Zapier"]
+  },
+  "ai": {
+    "eyebrow": "§ 03 · AI & Automation",
+    "title": "AI that <strong>delivers value.</strong>",
+    "sub": "No empty prompt engineering. We build agents, data pipelines and autonomous flows that actually automate decisions.",
+    "items": [
+      { "name": "AI Apps & Agents", "desc": "GPTs, Claude Apps, autonomous agents with memory and context." },
+      { "name": "AI Crawling & Extraction", "desc": "Pipeline to feed your own or external LLMs. Structured scraping." },
+      { "name": "MCP Server & Tools", "desc": "We build MCP servers for your tools. Open source to the client." },
+      { "name": "GEO & AI Search", "desc": "Optimization for ChatGPT Search, Perplexity, Gemini. Schema markup and content." },
+      { "name": "AI Migration", "desc": "Migration of prompts, agents and flows to your private infrastructure." }
+    ]
+  },
+  "services": {
+    "eyebrow": "§ 01 · Services",
+    "title": "Six <strong>engagements</strong>. Each with <strong>independent value</strong>.",
+    "intro": "No bundled retainers. Each artifact stands on its own — so you can stop or continue with full information.",
+    "items": [
+      { "n": "01", "name": "Discovery Sprint", "dur": "2 weeks · fixed scope", "desc": "Audience segmentation, customer journeys, AI, SEO strategy, KPI baseline, prioritized backlog. Each artifact independently approvable.", "tags": ["Strategy", "Research", "AI"] },
+      { "n": "02", "name": "Web Performance Partnership", "dur": "Per sprint · 6–12 weeks", "desc": "Embedded sprints to improve conversion, lead generation, organic traffic and retention. Shared ownership of results.", "tags": ["Conversion", "Growth"] },
+      { "n": "03", "name": "Stack Audit", "dur": "1 week · roadmap", "desc": "We map your stack — forms, CRM, automation, analytics. We identify waste and gaps. Migration roadmap. No new complexity.", "tags": ["Ops", "Audit"] },
+      { "n": "04", "name": "Segment SEO", "dur": "4 weeks · architecture", "desc": "Long-tail SEO built on your real buyer segments — not generic keywords. Tied to conversion goals.", "tags": ["SEO", "Content"] },
+      { "n": "05", "name": "KPI Baseline & Dashboard", "dur": "2 weeks · live", "desc": "GA4, Looker Studio dashboard, six-month targets. Internal visibility without development overhead.", "tags": ["Data", "Analytics"] },
+      { "n": "06", "name": "Growth Partnership", "dur": "Retainer · shared upside", "desc": "Ongoing sprint-based engagement with shared upside. We grow when you grow — not before.", "tags": ["Retainer", "Growth"] }
+    ]
+  },
+  "testimonial": {
+    "quote": "",
+    "author": "",
+    "role": "",
+    "company": "",
+    "metricLabel": "",
+    "metricValue": "",
+    "metricDelta": "",
+    "metricSub": ""
+  },
+  "partner": {
+    "eyebrow": "§ 02 · The partner model",
+    "title": "Clients are <strong>not accounts.</strong>",
+    "sub": "They are co-owners of the result. Each engagement is structured with shared upside, transparent milestones and deliverables with independent value.",
+    "labelAgency": "Agency model",
+    "labelPartner": "Partner model",
+    "agency": ["Hours billed against scope", "Retainer dependency", "Opaque deliverables, vague milestones", "Client as account"],
+    "model": ["Result, not hours", "Shared upside per sprint", "Artifacts with independent value", "Client as co-owner"]
+  },
+  "process": {
+    "eyebrow": "§ 04 · How we work",
+    "title": "A <strong>lab</strong> built on <strong>sprints</strong>.",
+    "sub": "Two-week cycles. Public commitments. Co-owned dashboards. If something isn't working, we say so.",
+    "steps": [
+      { "n": "S1", "t": "Frame", "d": "We define the one metric that matters. Everything else is noise." },
+      { "n": "S2", "t": "Map", "d": "Audiences, journeys, friction points. Public artifacts you approve independently." },
+      { "n": "S3-4", "t": "Build", "d": "Co-managed execution. Daily commits. Dashboard visible from day one." },
+      { "n": "S5", "t": "Measure", "d": "Baseline → result, in your numbers. No vanity metrics, no abstractions." },
+      { "n": "S6", "t": "Decide", "d": "Continue, descope, or handoff. We tell you which — even when continuing pays us more." }
+    ]
+  },
+  "founders": {
+    "eyebrow": "§ 05 · The founders",
+    "title": "45+ <strong>years</strong>, embedded as <strong>partners</strong>.",
+    "sub": "No account managers. No team layers. All three founders work with you directly, every sprint.",
+    "items": [
+      { "name": "Jorge Saud", "role": "Co-Founder & CTO", "initials": "JS", "bio": "Solutions Architect, 13+ years. Former CTO leading teams of 25+. 30+ projects delivered. Industrial engineering rigor: bottleneck thinking, process optimization, zero over-engineering.", "stat": "30+", "statLabel": "projects" },
+      { "name": "Edgar Yanez", "role": "Co-Founder & Design Director", "initials": "EY", "bio": "15+ years leading design at the highest level of Chilean corporate and financial services. Currently leads design at one of LATAM's largest retail and insurance conglomerates.", "stat": "15+", "statLabel": "years at scale" },
+      { "name": "Mauricio Naranjo", "role": "Co-Founder & COO", "initials": "MN", "bio": "15+ years delivering complex digital projects in fintech, telco and retail at national scale in Chile. Operational discipline, clean handoffs, commitments that are kept.", "stat": "Fintech", "statLabel": "Telco · Retail" }
+    ]
+  },
+  "faq": {
+    "eyebrow": "Frequently asked questions",
+    "items": [
+      { "q": "How is this different from an agency retainer?", "a": "We charge for results, not hours. Each engagement has a defined scope, measurable success metric and artifacts with independent value. You can stop after any sprint with everything documented and approved." },
+      { "q": "What does 'shared upside' mean in practice?", "a": "In Growth Partnerships, part of our compensation is tied to the committed metric. We grow when you grow. We have the same skin in the game as your internal team." },
+      { "q": "Do we need to use specific tools?", "a": "No. We map your current stack and improve it. If migration is needed we build a roadmap, but introducing new complexity is the last resort, not the first." },
+      { "q": "How quickly can we start?", "a": "A Discovery Sprint starts within 2 weeks of signing. A Web Performance sprint in 1 week, depending on scope." },
+      { "q": "What if we don't need a sprint?", "a": "We'll tell you. Honesty is an operating principle, not a value on a slide. A 30-minute call is enough to know if we're a fit." }
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "Honesty as an operating principle",
+    "title": "If <strong>you don't need us</strong>, we'll tell you.",
+    "sub": "A 30-minute call to see if a sprint is the right next step. No pitch deck.",
+    "button": "Book the call →"
+  },
+  "footer": {
+    "note": "Be Partner Labs · Santiago · Bogotá · Mexico City",
+    "rights": "© 2026 Be Partner Labs. Honesty is not a value on a slide."
+  },
+  "theme": {
+    "toggleLight": "Switch to light mode",
+    "toggleDark": "Switch to dark mode",
+    "label": "Theme"
+  }
+}

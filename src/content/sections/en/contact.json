@@ -1,0 +1,40 @@
+{
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's talk.",
+    "sub": "Tell us what you need and we'll get back to you in less than 24 hours. No pitch deck, no commitment.",
+    "fields": {
+      "name": "Full name",
+      "email": "Email address",
+      "company": "Company / Startup",
+      "message": "How can we help you?",
+      "intent": "Intent"
+    },
+    "placeholders": {
+      "name": "Your name",
+      "email": "you@email.com",
+      "company": "Optional",
+      "message": "Tell us what you need: type of project, goals, timeline..."
+    },
+    "button": "Send",
+    "sending": "Sending...",
+    "success": {
+      "title": "Message sent!",
+      "sub": "We'll get back to you in less than 24 hours."
+    },
+    "errors": {
+      "required": "This field is required.",
+      "emailInvalid": "Enter a valid email address.",
+      "server": "Something went wrong. Please try again later."
+    }
+  },
+  "footer": {
+    "note": "Be Partner Labs · Santiago · Bogotá · Mexico City",
+    "rights": "© 2026 Be Partner Labs. Honesty is not a value on a slide."
+  },
+  "theme": {
+    "toggleLight": "Switch to light mode",
+    "toggleDark": "Switch to dark mode",
+    "label": "Theme"
+  }
+}

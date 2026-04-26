@@ -1,15 +1,21 @@
 ---
 export const prerender = true;
 import Layout from '../../layouts/Layout.astro'
-import { useTranslations } from '../../i18n/index'
+import type { Translations } from '../../i18n/es'
 import SiteHeader from '../../components/sections/SiteHeader.astro'
 import SectionContact from '../../components/sections/SectionContact.astro'
 import SiteFooter from '../../components/sections/SiteFooter.astro'
+import { getCollection } from 'astro:content'
 
 const lang = 'en'
-const t = useTranslations(lang)
+const [pages, sections] = await Promise.all([
+  getCollection('pagesEn'),
+  getCollection('sectionsEn'),
+])
+const page = pages.find(p => p.id === 'contact')
+const t = sections.find(s => s.id === 'contact')!.data as unknown as Translations
 ---
-<Layout title="Contact — Be Partner Labs" description={t.contact.sub}>
+<Layout title={page?.data.title ?? 'Contact — Be Partner Labs'} description={page?.data.description} lang={lang}>
   <SiteHeader t={t} lang={lang} />
   <main>
     <SectionContact t={t} />

@@ -1,6 +1,6 @@
 ---
-title: Inicio
-description: Be Partner Labs — Sprints web, modelo de partner, upside compartido.
+title: Be Partner Labs — Partnerships web de alto rendimiento
+description: Sprints web · Modelo de partner · Upside compartido. Convertimos tu web en un motor de negocio.
 pathToTranslate: home
 ---
 

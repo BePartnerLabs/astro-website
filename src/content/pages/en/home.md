@@ -1,6 +1,6 @@
 ---
-title: Home
-description: Be Partner Labs — Web partnership, sprint-based, shared upside.
+title: Be Partner Labs — Web performance partnerships
+description: Web sprints · Partner model · Shared upside. We turn your web presence into a business engine.
 pathToTranslate: home
 ---
 

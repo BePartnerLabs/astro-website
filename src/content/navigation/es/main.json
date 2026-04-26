@@ -1,8 +1,12 @@
 {
   "items": [
-    { "key": "services", "label": "Servicios", "href": "/servicios" },
-    { "key": "partnership", "label": "Partnership", "href": "/partnership" },
-    { "key": "cases", "label": "Casos", "href": "/casos" },
-    { "key": "about", "label": "Nosotros", "href": "/nosotros" }
-  ]
+    { "key": "services",     "label": "Servicios",   "href": "#services" },
+    { "key": "partnership",  "label": "Partnership",  "href": "#partner" },
+    { "key": "about",        "label": "Nosotros",     "href": "#founders" },
+    { "key": "faq",          "label": "FAQ",          "href": "#faq" }
+  ],
+  "cta": {
+    "label": "Reservar discovery →",
+    "href": "/contact?intent=general"
+  }
 }

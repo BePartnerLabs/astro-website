@@ -2,11 +2,16 @@
 import type { Translations } from '../../i18n/es'
 import BPLMark from '../ds/BPLMark.astro'
 import ThemeToggle from '../ds/ThemeToggle.astro'
+import { getCollection } from 'astro:content'
 interface Props { t: Translations; lang: string }
 const { t, lang } = Astro.props
 const altLang = lang === 'es' ? 'en' : 'es'
 const altHref = lang === 'es' ? '/en' : '/'
-const contactHref = lang === 'es' ? '/contact?intent=general' : '/en/contact?intent=general'
+
+const navCollection = lang === 'es' ? await getCollection('navEs') : await getCollection('navEn')
+const navData = navCollection.find(e => e.id === 'main')?.data
+const navItems = navData?.items ?? []
+const navCta = navData?.cta ?? { label: t.nav.cta, href: lang === 'es' ? '/contact?intent=general' : '/en/contact?intent=general' }
 ---
 <header class="site-header">
   <div class="site-header__inner">
@@ -17,16 +22,15 @@ const contactHref = lang === 'es' ? '/contact?intent=general' : '/en/contact?int
     </a>
 
     <nav class="site-header__nav" aria-label="Main">
-      <a href="#services" data-nav-link>{t.nav.services}</a>
-      <a href="#partner"  data-nav-link>{t.nav.partnership}</a>
-      <a href="#founders" data-nav-link>{t.nav.about}</a>
-      <a href="#faq"      data-nav-link>FAQ</a>
+      {navItems.map(item => (
+        <a href={item.href} data-nav-link>{item.label}</a>
+      ))}
     </nav>
 
     <div class="site-header__actions">
       <a href={altHref} class="site-header__lang">{altLang.toUpperCase()}</a>
       <ThemeToggle t={t} />
-      <a href={contactHref} class="bpl-btn bpl-btn--primary bpl-btn--sm">{t.nav.cta}</a>
+      <a href={navCta.href} class="bpl-btn bpl-btn--primary bpl-btn--sm">{navCta.label}</a>
     </div>
 
     <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
@@ -56,16 +60,15 @@ const contactHref = lang === 'es' ? '/contact?intent=general' : '/en/contact?int
   </div>
 
   <ul class="nav-drawer__links" role="list">
-    <li><a href="#services" class="nav-drawer__link">{t.nav.services}</a></li>
-    <li><a href="#partner"  class="nav-drawer__link">{t.nav.partnership}</a></li>
-    <li><a href="#founders" class="nav-drawer__link">{t.nav.about}</a></li>
-    <li><a href="#faq"      class="nav-drawer__link">FAQ</a></li>
+    {navItems.map(item => (
+      <li><a href={item.href} class="nav-drawer__link">{item.label}</a></li>
+    ))}
   </ul>
 
   <div class="nav-drawer__footer">
     <ThemeToggle t={t} />
     <a href={altHref} class="nav-drawer__lang">{altLang.toUpperCase()}</a>
-    <a href={contactHref} class="bpl-btn bpl-btn--primary" style="justify-content:center">{t.nav.cta}</a>
+    <a href={navCta.href} class="bpl-btn bpl-btn--primary" style="justify-content:center">{navCta.label}</a>
   </div>
 </nav>
 
