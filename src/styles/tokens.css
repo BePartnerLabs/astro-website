@@ -51,22 +51,22 @@
     --bpl-font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
 
     /* ── Type scale (fluid via clamp) ── */
-    --bpl-text-hero:    clamp(40px, 7cqi, 84px);
-    --bpl-text-display: clamp(36px, 5.5cqi, 72px);
-    --bpl-text-h1:      clamp(30px, 4cqi, 52px);
-    --bpl-text-h2:      clamp(24px, 3.2cqi, 40px);
-    --bpl-text-h3:      clamp(20px, 2.2cqi, 28px);
-    --bpl-text-h4:      clamp(17px, 1.6cqi, 22px);
-    --bpl-text-body-lg: clamp(15px, 1.4cqi, 19px);
-    --bpl-text-body:    clamp(14px, 1.1cqi, 16px);
-    --bpl-text-body-sm: 13px;
-    --bpl-text-btn-lg:  16px;
-    --bpl-text-caption: 12px;
-    --bpl-text-mono-lg: 14px;
-    --bpl-text-mono:    12px;
-    --bpl-text-mono-sm: 11px;
-    --bpl-text-eyebrow: 11px;
-    --bpl-text-section-title: clamp(32px, 5.5cqi, 64px);
+    --bpl-text-hero:    clamp(2.5rem, 7cqi, 5.25rem);
+    --bpl-text-display: clamp(2.25rem, 5.5cqi, 4.5rem);
+    --bpl-text-h1:      clamp(1.875rem, 4cqi, 3.25rem);
+    --bpl-text-h2:      clamp(1.5rem, 3.2cqi, 2.5rem);
+    --bpl-text-h3:      clamp(1.25rem, 2.2cqi, 1.75rem);
+    --bpl-text-h4:      clamp(1.0625rem, 1.6cqi, 1.375rem);
+    --bpl-text-body-lg: clamp(1.125rem, 1.4cqi, 1.25rem);
+    --bpl-text-body:    clamp(1rem, 1.1cqi, 1.125rem);
+    --bpl-text-body-sm: 0.9375rem;
+    --bpl-text-btn-lg:  1rem;
+    --bpl-text-caption: 0.875rem;
+    --bpl-text-mono-lg: 0.875rem;
+    --bpl-text-mono:    0.8125rem;
+    --bpl-text-mono-sm: 0.75rem;
+    --bpl-text-eyebrow: 0.75rem;
+    --bpl-text-section-title: clamp(2rem, 5.5cqi, 4rem);
 
     /* ── Spacing (4pt scale) ── */
     --bpl-space-unit: 4px;
@@ -90,12 +90,12 @@
     --bpl-space-35: calc(var(--bpl-space-unit) * 35);
 
     /* ── Radius ── */
-    --bpl-radius-xs:   4px;
-    --bpl-radius-sm:   6px;
-    --bpl-radius-md:   10px;
-    --bpl-radius-lg:   14px;
-    --bpl-radius-xl:   20px;
-    --bpl-radius-pill: 999px;
+    --bpl-radius-xs:   0.25rem;
+    --bpl-radius-sm:   0.375rem;
+    --bpl-radius-md:   0.625rem;
+    --bpl-radius-lg:   0.875rem;
+    --bpl-radius-xl:   1.25rem;
+    --bpl-radius-pill: 62.5rem;
 
     /* ── Motion ── */
     --bpl-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -134,6 +134,17 @@
   }
   * { box-sizing: border-box; }
   ::selection { background: var(--bpl-mint); color: var(--bpl-mint-ink); }
+
+  .bpl-skip-link {
+    position: absolute; top: -100px; left: 16px; z-index: 9999;
+    padding: 8px 16px; background: var(--bpl-ink); color: var(--bpl-bg);
+    font-weight: 500; border-radius: var(--bpl-radius-md);
+    text-decoration: none;
+    transition: top var(--bpl-dur-fast) var(--bpl-ease-std);
+  }
+  .bpl-skip-link:focus {
+    top: 16px;
+  }
 }
 
 @layer components {
@@ -144,8 +155,8 @@
     --_bg:     var(--bpl-btn-bg,     var(--bpl-ink));
     --_fg:     var(--bpl-btn-fg,     var(--bpl-bg));
     --_border: var(--bpl-btn-border, transparent);
-    --_h:      var(--bpl-btn-h,      40px);
-    --_px:     var(--bpl-btn-px,     18px);
+    --_h:      var(--bpl-btn-h,      2.5rem);
+    --_px:     var(--bpl-btn-px,     1.125rem);
     --_fs:     var(--bpl-btn-fs,     var(--bpl-text-body));
     display: inline-flex; align-items: center; gap: var(--bpl-space-2);
     height: var(--_h); padding: 0 var(--_px); font-size: var(--_fs);
@@ -165,8 +176,8 @@
   .bpl-btn--secondary { --bpl-btn-bg: transparent;     --bpl-btn-fg: var(--bpl-ink); --bpl-btn-border: var(--bpl-line); }
   .bpl-btn--mint      { --bpl-btn-bg: var(--bpl-mint); --bpl-btn-fg: var(--bpl-mint-ink); }
   .bpl-btn--ghost     { --bpl-btn-bg: transparent;     --bpl-btn-fg: var(--bpl-ink); }
-  .bpl-btn--sm { --bpl-btn-h: 32px; --bpl-btn-px: 12px; --bpl-btn-fs: var(--bpl-text-body-sm); }
-  .bpl-btn--lg { --bpl-btn-h: 52px; --bpl-btn-px: 24px; --bpl-btn-fs: var(--bpl-text-btn-lg); }
+  .bpl-btn--sm { --bpl-btn-h: 2rem; --bpl-btn-px: 0.75rem; --bpl-btn-fs: var(--bpl-text-body-sm); }
+  .bpl-btn--lg { --bpl-btn-h: 3.25rem; --bpl-btn-px: 1.5rem; --bpl-btn-fs: var(--bpl-text-btn-lg); }
 
   /* ── Card ── */
   .bpl-card {
@@ -190,7 +201,7 @@
     --_fg:     var(--bpl-badge-fg,     var(--bpl-ink-2));
     --_border: var(--bpl-badge-border, var(--bpl-line));
     display: inline-flex; align-items: center; gap: var(--bpl-space-1);
-    height: 22px; padding: 0 var(--bpl-space-2);
+    height: 1.375rem; padding: 0 var(--bpl-space-2);
     font: 500 var(--bpl-text-mono-sm) / 1 var(--bpl-font-mono);
     letter-spacing: 0.04em;
     background: var(--_bg); color: var(--_fg);
@@ -202,7 +213,7 @@
   .bpl-badge--outline { --bpl-badge-bg: transparent; }
 
   /* ── Input ── */
-  .bpl-input-wrap  { display: flex; flex-direction: column; gap: 6px; }
+  .bpl-input-wrap  { display: flex; flex-direction: column; gap: 0.375rem; }
   .bpl-input-label {
     font: 500 var(--bpl-text-mono-sm) / 1.2 var(--bpl-font-mono);
     letter-spacing: 0.08em; text-transform: uppercase; color: var(--bpl-ink-3);
@@ -210,7 +221,7 @@
   .bpl-input {
     --_bg:     var(--bpl-input-bg,     var(--bpl-surface));
     --_border: var(--bpl-input-border, var(--bpl-line));
-    height: 40px; padding: 0 14px;
+    height: 2.5rem; padding: 0 0.875rem;
     background: var(--_bg); color: var(--bpl-ink);
     border: 1px solid var(--_border); border-radius: var(--bpl-radius-md);
     font-size: var(--bpl-text-body); font-family: var(--bpl-font-sans);
@@ -226,9 +237,9 @@
   .bpl-input-required { color: var(--bpl-mint-deep); }
 
   /* ── Textarea ── */
-  .bpl-textarea-wrap  { display: flex; flex-direction: column; gap: 6px; }
+  .bpl-textarea-wrap  { display: flex; flex-direction: column; gap: 0.375rem; }
   .bpl-textarea {
-    width: 100%; padding: 12px 14px;
+    width: 100%; padding: 0.75rem 0.875rem;
     background: var(--bpl-surface); color: var(--bpl-ink);
     border: 1.5px solid var(--bpl-line); border-radius: var(--bpl-radius-md);
     font-size: var(--bpl-text-body); font-family: var(--bpl-font-sans);

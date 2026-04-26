@@ -34,6 +34,9 @@ const twitterHandle = '@BePartnerLabs'
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#5FCB9F" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-itunes-app" content="app-id=1551344070" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content={twitterHandle} />
     <meta name="twitter:title" content={title} />
@@ -48,6 +51,7 @@ const twitterHandle = '@BePartnerLabs'
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="apple-intelligence-supports-summarization" content="true" />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -66,6 +70,7 @@ const twitterHandle = '@BePartnerLabs'
     })} />
   </head>
   <body>
+    <a href="#main-content" class="bpl-skip-link">Skip to content</a>
     <div id="bpl-progress" aria-hidden="true"></div>
     <slot />
     <script is:inline>
