@@ -23,4 +23,12 @@ const { title, description = '' } = Astro.props
 <style is:global>
   @import '../styles/tokens.css';
   @import '../styles/animations.css';
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    container-type: inline-size;
+    container-name: page;
+  }
 </style>

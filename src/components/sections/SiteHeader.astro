@@ -99,4 +99,10 @@ const altHref = lang === 'es' ? '/en' : '/'
   border-radius: 6px;
 }
 .site-header__lang:hover { color: var(--bpl-ink); border-color: var(--bpl-ink-3); }
+
+@container page (max-width: 680px) {
+  .site-header__inner { padding: 0 var(--bpl-space-5); }
+  .site-header__nav { display: none; }
+  .site-header__lang { display: none; }
+}
 </style>

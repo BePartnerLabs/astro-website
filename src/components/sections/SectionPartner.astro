@@ -55,12 +55,12 @@ const s = t.partner
   margin-bottom: var(--bpl-space-5);
 }
 .partner__title {
-  font: 600 64px/1.0 var(--bpl-font-sans);
+  font: 600 var(--bpl-text-display)/1.0 var(--bpl-font-sans);
   letter-spacing: -0.035em;
   color: var(--bpl-ink);
   margin: 0;
 }
-.partner__title strong { color: var(--bpl-mint-deep); font-weight: 600; }
+:global(.partner__title strong) { color: var(--bpl-mint-deep); font-weight: 600; }
 .partner__bar {
   width: 64px;
   height: 3px;
@@ -115,4 +115,11 @@ const s = t.partner
 .partner__box li span { color: var(--bpl-ink-4); flex-shrink: 0; }
 .partner__box--partner li { color: var(--bpl-ink); font-weight: 500; }
 .partner__box--partner li span { color: var(--bpl-mint-deep); }
+
+@container page (max-width: 860px) {
+  .partner__inner { grid-template-columns: 1fr; }
+}
+@container page (max-width: 680px) {
+  .partner { padding: var(--bpl-space-16) var(--bpl-space-5); }
+}
 </style>

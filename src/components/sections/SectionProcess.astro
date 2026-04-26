@@ -40,7 +40,7 @@ const s = t.process
   margin-bottom: var(--bpl-space-5);
 }
 .process__title {
-  font: 600 56px/1.05 var(--bpl-font-sans);
+  font: 600 var(--bpl-text-display)/1.05 var(--bpl-font-sans);
   letter-spacing: -0.03em;
   color: var(--bpl-ink);
   margin: 0;
@@ -98,5 +98,17 @@ const s = t.process
   font: 400 14px/1.55 var(--bpl-font-sans);
   color: var(--bpl-ink-2);
   margin: var(--bpl-space-2) 0 0;
+}
+
+@container page (max-width: 860px) {
+  .process__steps { grid-template-columns: repeat(3, 1fr); }
+  .process__steps::before { display: none; }
+}
+@container page (max-width: 600px) {
+  .process { padding: var(--bpl-space-16) var(--bpl-space-5); }
+  .process__steps { grid-template-columns: 1fr 1fr; gap: var(--bpl-space-6); }
+}
+@container page (max-width: 400px) {
+  .process__steps { grid-template-columns: 1fr; }
 }
 </style>

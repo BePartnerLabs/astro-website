@@ -53,12 +53,12 @@ const s = t.finalCta
   margin-bottom: var(--bpl-space-6);
 }
 .final-cta__title {
-  font: 600 64px/1.0 var(--bpl-font-sans);
+  font: 600 var(--bpl-text-display)/1.0 var(--bpl-font-sans);
   letter-spacing: -0.035em;
   margin: 0;
   color: inherit;
 }
-.final-cta__title strong { color: var(--bpl-mint); font-weight: 600; }
+:global(.final-cta__title strong) { color: var(--bpl-mint); font-weight: 600; }
 .final-cta__sub {
   font: 400 18px/1.55 var(--bpl-font-sans);
   color: color-mix(in srgb, var(--bpl-bg) 75%, transparent);
@@ -79,4 +79,9 @@ const s = t.finalCta
   transition: opacity 0.15s;
 }
 .final-cta__btn:hover { opacity: 0.9; }
+
+@container page (max-width: 680px) {
+  .final-cta { padding: var(--bpl-space-16) var(--bpl-space-5); }
+  .final-cta__inner { padding: var(--bpl-space-12) var(--bpl-space-8); border-radius: 14px; }
+}
 </style>

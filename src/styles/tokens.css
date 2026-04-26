@@ -22,9 +22,9 @@
     --bpl-teal:   light-dark(#3E7C8A, #7FB4BF);
 
     /* ── Derived via relative color syntax ── */
-    --bpl-mint-deep:  hsl(from var(--bpl-mint) h s calc(l - 12%));
-    --bpl-mint-wash:  hsl(from var(--bpl-mint) h s calc(l + 30%));
-    --bpl-mint-ink:   hsl(from var(--bpl-mint) h s calc(l - 40%));
+    --bpl-mint-deep:  light-dark(#2E9E72, #4DC896);
+    --bpl-mint-wash:  light-dark(#DDF5EC, #1A3D2E);
+    --bpl-mint-ink:   light-dark(#0D4028, #0A2A1A);
     --bpl-surface:    hsl(from var(--bpl-bg) h s calc(l + 3%));
     --bpl-surface-2:  hsl(from var(--bpl-bg) h s calc(l - 3%));
     --bpl-line:       hsl(from var(--bpl-bg) h s calc(l - 8%));
@@ -50,14 +50,15 @@
     --bpl-font-sans: "Be Vietnam Pro", "Inter", system-ui, sans-serif;
     --bpl-font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
 
-    /* ── Type scale ── */
-    --bpl-text-display: clamp(48px, 6vw, 72px);
-    --bpl-text-h1:      clamp(36px, 4.4vw, 52px);
-    --bpl-text-h2:      clamp(28px, 3vw, 36px);
-    --bpl-text-h3:      24px;
-    --bpl-text-h4:      18px;
-    --bpl-text-body-lg: 17px;
-    --bpl-text-body:    15px;
+    /* ── Type scale (fluid via clamp) ── */
+    --bpl-text-hero:    clamp(40px, 7cqi, 84px);
+    --bpl-text-display: clamp(36px, 5.5cqi, 72px);
+    --bpl-text-h1:      clamp(30px, 4cqi, 52px);
+    --bpl-text-h2:      clamp(24px, 3.2cqi, 40px);
+    --bpl-text-h3:      clamp(20px, 2.2cqi, 28px);
+    --bpl-text-h4:      clamp(17px, 1.6cqi, 22px);
+    --bpl-text-body-lg: clamp(15px, 1.4cqi, 19px);
+    --bpl-text-body:    clamp(14px, 1.1cqi, 16px);
     --bpl-text-body-sm: 13px;
     --bpl-text-btn-lg:  16px;
     --bpl-text-caption: 12px;

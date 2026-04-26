@@ -63,4 +63,9 @@ const { t, lang } = Astro.props
   color: var(--bpl-ink-3);
   margin: 0;
 }
+
+@container page (max-width: 680px) {
+  .site-footer__inner { flex-direction: column; align-items: flex-start; }
+  .site-footer__note { display: none; }
+}
 </style>

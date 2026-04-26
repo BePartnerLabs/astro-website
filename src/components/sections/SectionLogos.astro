@@ -51,4 +51,10 @@ const { t } = Astro.props
   letter-spacing: 0.04em;
   color: var(--bpl-ink-3);
 }
+
+@container page (max-width: 680px) {
+  .logos__inner { flex-direction: column; align-items: flex-start; gap: var(--bpl-space-5); }
+  .logos__label { max-width: 100%; }
+  .logos__list { gap: var(--bpl-space-6); justify-content: flex-start; }
+}
 </style>

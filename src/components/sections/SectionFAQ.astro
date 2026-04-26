@@ -66,9 +66,14 @@ const s = t.faq
 }
 details[open] .faq__icon { transform: rotate(45deg); }
 .faq__a {
-  font: 400 16px/1.6 var(--bpl-font-sans);
+  font: 400 var(--bpl-text-body-lg)/1.6 var(--bpl-font-sans);
   color: var(--bpl-ink-2);
   margin: var(--bpl-space-4) 0 0;
   max-width: 720px;
+}
+
+@container page (max-width: 680px) {
+  .faq { padding: var(--bpl-space-16) var(--bpl-space-5); }
+  .faq__inner { max-width: 100%; }
 }
 </style>

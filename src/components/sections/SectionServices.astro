@@ -52,13 +52,13 @@ const s = t.services
   margin-bottom: var(--bpl-space-5);
 }
 .services__title {
-  font: 600 56px/1.05 var(--bpl-font-sans);
+  font: 600 var(--bpl-text-display)/1.05 var(--bpl-font-sans);
   letter-spacing: -0.03em;
   color: var(--bpl-ink);
   margin: 0;
 }
 .services__intro {
-  font: 400 18px/1.55 var(--bpl-font-sans);
+  font: 400 var(--bpl-text-body-lg)/1.55 var(--bpl-font-sans);
   color: var(--bpl-ink-2);
   margin: 0;
 }
@@ -104,7 +104,7 @@ const s = t.services
   text-align: right;
 }
 .svc-card__name {
-  font: 600 22px/1.2 var(--bpl-font-sans);
+  font: 600 var(--bpl-text-h4)/1.2 var(--bpl-font-sans);
   letter-spacing: -0.015em;
   color: var(--bpl-ink);
 }
@@ -120,5 +120,15 @@ const s = t.services
   flex-wrap: wrap;
   padding-top: var(--bpl-space-4);
   border-top: 1px solid var(--bpl-line-soft);
+}
+
+@container page (max-width: 900px) {
+  .services__grid { grid-template-columns: repeat(2, 1fr); }
+  .services__head { grid-template-columns: 1fr; gap: var(--bpl-space-6); }
+}
+@container page (max-width: 600px) {
+  .services { padding: var(--bpl-space-16) var(--bpl-space-5); }
+  .services__grid { grid-template-columns: 1fr; }
+  .svc-card { min-height: auto; }
 }
 </style>

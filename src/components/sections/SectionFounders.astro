@@ -45,7 +45,7 @@ const s = t.founders
   margin-bottom: var(--bpl-space-5);
 }
 .founders__title {
-  font: 600 56px/1.05 var(--bpl-font-sans);
+  font: 600 var(--bpl-text-display)/1.05 var(--bpl-font-sans);
   letter-spacing: -0.03em;
   color: var(--bpl-ink);
   margin: 0;
@@ -119,5 +119,13 @@ const s = t.founders
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--bpl-ink-3);
+}
+
+@container page (max-width: 900px) {
+  .founders__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@container page (max-width: 600px) {
+  .founders { padding: var(--bpl-space-16) var(--bpl-space-5); }
+  .founders__grid { grid-template-columns: 1fr; }
 }
 </style>

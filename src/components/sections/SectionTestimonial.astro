@@ -85,7 +85,7 @@ const s = t.testimonial
   margin-bottom: var(--bpl-space-3);
 }
 .testimonial__metric-value {
-  font: 600 52px/1 var(--bpl-font-sans);
+  font: 600 var(--bpl-text-h1)/1 var(--bpl-font-sans);
   letter-spacing: -0.03em;
   color: var(--bpl-ink);
   display: flex;
@@ -100,5 +100,14 @@ const s = t.testimonial
 .testimonial__metric-sub {
   font: 400 12px/1.5 var(--bpl-font-sans);
   color: var(--bpl-ink-3);
+}
+
+@container page (max-width: 860px) {
+  .testimonial__inner { grid-template-columns: 1fr; }
+  .testimonial__metric { min-width: auto; }
+}
+@container page (max-width: 680px) {
+  .testimonial { padding: var(--bpl-space-16) var(--bpl-space-5); }
+  .testimonial__quote { font-size: var(--bpl-text-h3); }
 }
 </style>
