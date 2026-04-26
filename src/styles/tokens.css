@@ -27,8 +27,8 @@
     --bpl-mint-ink:   light-dark(#0D4028, #0A2A1A);
     --bpl-surface:    hsl(from var(--bpl-bg) h s calc(l + 3%));
     --bpl-surface-2:  hsl(from var(--bpl-bg) h s calc(l - 3%));
-    --bpl-line:       hsl(from var(--bpl-bg) h s calc(l - 8%));
-    --bpl-line-soft:  hsl(from var(--bpl-bg) h s calc(l - 5%));
+    --bpl-line:       light-dark(#E5E0D8, #2D3B30);
+    --bpl-line-soft:  light-dark(#E5E0D8, #1F2920);
     --bpl-ink-2:      hsl(from var(--bpl-ink) h s calc(l - 18%));
     --bpl-ink-3:      hsl(from var(--bpl-ink) h s calc(l - 36%));
     --bpl-ink-4:      hsl(from var(--bpl-ink) h s calc(l - 52%));

@@ -73,7 +73,7 @@ const s = t.services
 }
 .svc-card {
   background: var(--bpl-surface);
-  border: 1.5px solid var(--bpl-line-soft);
+  border: 1.5px solid var(--bpl-line);
   border-radius: var(--bpl-radius-lg);
   padding: var(--bpl-space-7);
   display: flex;
@@ -82,13 +82,13 @@ const s = t.services
   min-height: 280px;
   transition: border-color var(--bpl-dur-fast) var(--bpl-ease-std), box-shadow var(--bpl-dur-fast) var(--bpl-ease-std), transform var(--bpl-dur-fast) var(--bpl-ease-std);
 }
-.svc-card:hover {
+.svc-card:hover,
+.svc-card:focus-within {
   border-color: var(--bpl-mint);
   box-shadow: var(--bpl-shadow-md);
   transform: translateY(-2px);
 }
 .svc-card:focus-within {
-  border-color: var(--bpl-focus);
   outline: 2px solid var(--bpl-focus);
   outline-offset: 2px;
 }
