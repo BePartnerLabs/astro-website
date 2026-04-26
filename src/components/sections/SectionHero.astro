@@ -17,9 +17,7 @@ const s = t.hero
         <span class="hero__dot" aria-hidden="true"></span>
         {s.eyebrow}
       </div>
-      <h1 class="hero__heading">
-        {s.line1}<br/>{s.line2}{s.line2 ? ' ' : ''}<span class="hero__accent">{s.accent}</span>{s.line3 ? <><br/>{s.line3}</> : ''}
-      </h1>
+      <h1 class="hero__heading" set:html={s.headingHtml} />
       <p class="hero__body">{s.body}</p>
       <div class="hero__ctas">
         <Button variant="primary" size="lg" href="#contact">{s.ctaPrimary}</Button>
@@ -118,6 +116,7 @@ const s = t.hero
   margin: 0;
 }
 .hero__accent { color: var(--bpl-mint-deep); }
+.hero__heading strong { color: var(--bpl-mint-deep); font-weight: 600; }
 .hero__body {
   margin: var(--bpl-space-7) 0 0;
   font: 400 19px/1.55 var(--bpl-font-sans);

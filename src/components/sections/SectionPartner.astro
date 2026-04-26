@@ -8,7 +8,7 @@ const s = t.partner
   <div class="partner__inner">
     <div class="partner__left">
       <div class="partner__eyebrow">{s.eyebrow}</div>
-      <h2 class="partner__title">{s.title}</h2>
+      <h2 class="partner__title" set:html={s.title} />
       <div class="partner__bar" aria-hidden="true"></div>
       <p class="partner__sub">{s.sub}</p>
     </div>
@@ -60,6 +60,7 @@ const s = t.partner
   color: var(--bpl-ink);
   margin: 0;
 }
+.partner__title strong { color: var(--bpl-mint-deep); font-weight: 600; }
 .partner__bar {
   width: 64px;
   height: 3px;

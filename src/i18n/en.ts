@@ -10,10 +10,7 @@ export const en: Translations = {
   },
   hero: {
     eyebrow: 'Web partnership · Sprint-based · Shared upside',
-    line1: 'We turn web',
-    line2: 'presence into a',
-    accent: 'business engine.',
-    line3: '',
+    headingHtml: 'We turn web<br/>presence into a<br/><strong>business engine.</strong>',
     body: "Focused sprints. Shared ownership. Zero black boxes. We don't sell hours, we don't invent work — and if you don't need us, we'll tell you.",
     ctaPrimary: 'Book a discovery sprint',
     ctaSecondary: 'How we work',
@@ -56,7 +53,7 @@ export const en: Translations = {
   },
   partner: {
     eyebrow: '§ 02 · The partner model',
-    title: 'Clients are not accounts.',
+    title: 'Clients are <strong>not accounts.</strong>',
     sub: 'They are co-owners of the outcome. Every engagement is structured around shared upside, transparent gates, and deliverables that have standalone value.',
     labelAgency: 'Agency model',
     labelPartner: 'Partner model',
@@ -97,7 +94,7 @@ export const en: Translations = {
   },
   finalCta: {
     eyebrow: 'Honesty as operating principle',
-    title: "If you don't need us, we'll tell you.",
+    title: "If <strong>you don't need us</strong>, we'll tell you.",
     sub: "A 30-minute discovery call to see if a sprint is the right next step. No pitch deck.",
     button: 'Book the call →',
   },

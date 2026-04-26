@@ -11,7 +11,7 @@ const s = t.finalCta
     </div>
     <div class="final-cta__content">
       <div class="final-cta__eyebrow">{s.eyebrow}</div>
-      <h2 class="final-cta__title">{s.title}</h2>
+      <h2 class="final-cta__title" set:html={s.title} />
       <p class="final-cta__sub">{s.sub}</p>
       <a href="mailto:hola@bepartnerlabs.com" class="final-cta__btn">{s.button}</a>
     </div>
@@ -58,6 +58,7 @@ const s = t.finalCta
   margin: 0;
   color: inherit;
 }
+.final-cta__title strong { color: var(--bpl-mint); font-weight: 600; }
 .final-cta__sub {
   font: 400 18px/1.55 var(--bpl-font-sans);
   color: color-mix(in srgb, var(--bpl-bg) 75%, transparent);

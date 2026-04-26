@@ -8,10 +8,7 @@ export const es = {
   },
   hero: {
     eyebrow: 'Sprints web · Modelo de partner · Upside compartido',
-    line1: 'Convertimos tu web',
-    line2: 'en un',
-    accent: 'motor',
-    line3: 'de negocio.',
+    headingHtml: 'Convertimos tu web<br/>en un <strong>motor<br/>de negocio.</strong>',
     body: 'Sprints enfocados. Co-propiedad del resultado. Cero cajas negras. No vendemos horas, no inventamos trabajo — y si no nos necesitas, te lo decimos.',
     ctaPrimary: 'Reservar discovery sprint',
     ctaSecondary: 'Cómo trabajamos',
@@ -54,7 +51,7 @@ export const es = {
   },
   partner: {
     eyebrow: '§ 02 · El modelo partner',
-    title: 'Los clientes no son cuentas.',
+    title: 'Los clientes <strong>no son cuentas.</strong>',
     sub: 'Son co-propietarios del resultado. Cada engagement se estructura con upside compartido, hitos transparentes y entregables con valor independiente.',
     labelAgency: 'Modelo agencia',
     labelPartner: 'Modelo partner',
@@ -95,7 +92,7 @@ export const es = {
   },
   finalCta: {
     eyebrow: 'Honestidad como principio operativo',
-    title: 'Si no nos necesitas, te lo decimos.',
+    title: 'Si <strong>no nos necesitas</strong>, te lo decimos.',
     sub: 'Una llamada de 30 minutos para ver si un sprint es el siguiente paso correcto. Sin pitch deck.',
     button: 'Reservar la llamada →',
   },
