@@ -105,6 +105,35 @@ export const es = {
     toggleDark: 'Cambiar a modo oscuro',
     label: 'Tema',
   },
+  contact: {
+    eyebrow: 'Contacto',
+    title: 'Hablemos.',
+    sub: 'Cuéntanos qué necesitas y te responderemos en menos de 24 horas. Sin pitch deck, sin compromiso.',
+    fields: {
+      name: 'Nombre completo',
+      email: 'Correo electrónico',
+      company: 'Empresa / Startup',
+      message: '¿En qué te podemos ayudar?',
+      intent: 'Intent',
+    },
+    placeholders: {
+      name: 'Tu nombre',
+      email: 'tu@email.com',
+      company: 'Opcional',
+      message: 'Cuéntanos qué necesitas: tipo de proyecto, objetivos,timeline...',
+    },
+    button: 'Enviar',
+    sending: 'Enviando...',
+    success: {
+      title: '¡Mensaje enviado!',
+      sub: 'Te responderemos en menos de 24 horas.',
+    },
+    errors: {
+      required: 'Este campo es obligatorio.',
+      emailInvalid: 'Ingresa un correo válido.',
+      server: 'Algo salió mal. Intenta de nuevo más tarde.',
+    },
+  },
 };
 
 export type Translations = typeof es;

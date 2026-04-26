@@ -9,9 +9,23 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "deploy": "wrangler pages deploy dist",
+    "deploy:worker": "wrangler deploy",
+    "astro": "astro",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "astro": "^6.1.9"
+    "@astrojs/cloudflare": "^13.2.1",
+    "astro": "^6.1.9",
+    "resend": "^6.12.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@vitest/coverage-v8": "^4.1.5",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.5",
+    "wrangler": "^4.85.0"
   }
 }

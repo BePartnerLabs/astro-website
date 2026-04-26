@@ -218,7 +218,29 @@
     transition: border-color var(--bpl-dur-fast) var(--bpl-ease-std);
   }
   .bpl-input:focus { --bpl-input-border: var(--bpl-focus); }
+  .bpl-input--error { --bpl-input-border: var(--bpl-danger); }
+  .bpl-input--error:focus { --bpl-input-border: var(--bpl-danger); box-shadow: 0 0 0 3px color-mix(in srgb, var(--bpl-danger) 20%, transparent); }
   .bpl-input-hint  { font-size: var(--bpl-text-caption); color: var(--bpl-ink-3); }
+  .bpl-input-required { color: var(--bpl-mint-deep); }
+  .bpl-error-msg { font-size: var(--bpl-text-caption); color: var(--bpl-danger); font-family: var(--bpl-font-sans); }
+  .bpl-input-required { color: var(--bpl-mint-deep); }
+
+  /* ── Textarea ── */
+  .bpl-textarea-wrap  { display: flex; flex-direction: column; gap: 6px; }
+  .bpl-textarea {
+    width: 100%; padding: 12px 14px;
+    background: var(--bpl-surface); color: var(--bpl-ink);
+    border: 1.5px solid var(--bpl-line); border-radius: var(--bpl-radius-md);
+    font-size: var(--bpl-text-body); font-family: var(--bpl-font-sans);
+    outline: none; resize: vertical;
+    transition: border-color var(--bpl-dur-fast) var(--bpl-ease-std),
+                box-shadow  var(--bpl-dur-fast) var(--bpl-ease-std);
+  }
+  .bpl-textarea:focus { border-color: var(--bpl-focus); box-shadow: 0 0 0 3px color-mix(in srgb, var(--bpl-focus) 20%, transparent); }
+  .bpl-textarea::placeholder { color: var(--bpl-ink-4); }
+  .bpl-textarea-label { font: 500 var(--bpl-text-mono-sm) / 1.2 var(--bpl-font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--bpl-ink-3); }
+  .bpl-textarea-required { color: var(--bpl-mint-deep); }
+  .bpl-textarea-hint { font-size: var(--bpl-text-caption); color: var(--bpl-ink-3); }
 
   /* ── Stat ── */
   .bpl-stat         { display: flex; flex-direction: column; gap: var(--bpl-space-1); }

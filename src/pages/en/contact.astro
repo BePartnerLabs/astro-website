@@ -1,0 +1,18 @@
+---
+export const prerender = true;
+import Layout from '../../layouts/Layout.astro'
+import { useTranslations } from '../../i18n/index'
+import SiteHeader from '../../components/sections/SiteHeader.astro'
+import SectionContact from '../../components/sections/SectionContact.astro'
+import SiteFooter from '../../components/sections/SiteFooter.astro'
+
+const lang = 'en'
+const t = useTranslations(lang)
+---
+<Layout title="Contact — Be Partner Labs" description={t.contact.sub}>
+  <SiteHeader t={t} lang={lang} />
+  <main>
+    <SectionContact t={t} />
+  </main>
+  <SiteFooter t={t} lang={lang} />
+</Layout>

@@ -1,0 +1,287 @@
+---
+import type { Translations } from '../../i18n/es'
+import Input from '../ds/Input.astro'
+import Textarea from '../ds/Textarea.astro'
+
+interface Props { t: Translations }
+const { t } = Astro.props
+const s = t.contact
+---
+<section class="contact-form-section">
+  <div class="contact-form-section__inner">
+    <div class="contact-form-section__header">
+      <div class="bpl-eyebrow">{s.eyebrow}</div>
+      <h2 class="contact-form-section__title" set:html={s.title} />
+      <p class="contact-form-section__sub">{s.sub}</p>
+    </div>
+
+    <div class="contact-form-section__form-wrap">
+      <form id="contact-form" class="contact-form" novalidate>
+        <input type="hidden" name="intent" id="intent-field" value="general" />
+
+        <div class="contact-form__row contact-form__row--2col">
+          <Input
+            label={s.fields.name}
+            name="name"
+            placeholder={s.placeholders.name}
+            required
+            id="cf-name"
+          />
+          <Input
+            label={s.fields.email}
+            name="email"
+            type="email"
+            placeholder={s.placeholders.email}
+            required
+            id="cf-email"
+          />
+        </div>
+
+        <div class="contact-form__row">
+          <Input
+            label={s.fields.company}
+            name="company"
+            placeholder={s.placeholders.company}
+            id="cf-company"
+          />
+        </div>
+
+        <div class="contact-form__row">
+          <Textarea
+            label={s.fields.message}
+            name="message"
+            placeholder={s.placeholders.message}
+            required
+            rows={6}
+            id="cf-message"
+          />
+        </div>
+
+        <div class="contact-form__actions">
+          <button
+            type="submit"
+            id="cf-submit"
+            class="bpl-btn bpl-btn--mint bpl-btn--lg"
+            data-err-required={s.errors.required}
+            data-err-email={s.errors.emailInvalid}
+            data-err-server={s.errors.server}
+          >
+            <span class="cf-btn-text">{s.button}</span>
+            <span class="cf-btn-loading" aria-hidden="true" style="display:none">{s.sending}</span>
+          </button>
+        </div>
+      </form>
+
+      <div id="contact-form-success" class="contact-form__success" style="display:none" role="status">
+        <div class="contact-form__success-icon" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="19" stroke="var(--bpl-mint)" stroke-width="1.5"/>
+            <path d="M12 20l6 6 10-12" stroke="var(--bpl-mint)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="contact-form__success-title">{s.success.title}</h3>
+        <p class="contact-form__success-sub">{s.success.sub}</p>
+      </div>
+
+      <div id="contact-form-error" class="contact-form__error" style="display:none" role="alert">
+        <span class="bpl-error-msg"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.contact-form-section {
+  background: var(--bpl-bg);
+  padding: var(--bpl-space-35) var(--bpl-space-8);
+}
+.contact-form-section__inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.contact-form-section__header {
+  margin-bottom: var(--bpl-space-12);
+}
+.contact-form-section__title {
+  font: 600 var(--bpl-text-display)/1 var(--bpl-font-sans);
+  letter-spacing: -0.035em;
+  color: var(--bpl-ink);
+  margin: var(--bpl-space-5) 0 0;
+}
+.contact-form-section__sub {
+  font: 400 var(--bpl-text-body-lg)/1.55 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  margin: var(--bpl-space-5) 0 0;
+  max-width: 560px;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bpl-space-5);
+}
+.contact-form__row { display: flex; flex-direction: column; gap: var(--bpl-space-5); }
+.contact-form__row--2col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--bpl-space-5); }
+.contact-form__actions { margin-top: var(--bpl-space-3); }
+.contact-form__actions :global(.bpl-btn) { width: 100%; justify-content: center; }
+
+.contact-form__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--bpl-space-16) var(--bpl-space-8);
+  gap: var(--bpl-space-4);
+}
+.contact-form__success-icon { margin-bottom: var(--bpl-space-4); }
+.contact-form__success-title {
+  font: 600 var(--bpl-text-h3)/1 var(--bpl-font-sans);
+  letter-spacing: -0.025em;
+  color: var(--bpl-ink);
+  margin: 0;
+}
+.contact-form__success-sub {
+  font: 400 var(--bpl-text-body-lg)/1.55 var(--bpl-font-sans);
+  color: var(--bpl-ink-2);
+  margin: 0;
+}
+
+.contact-form__error {
+  padding: var(--bpl-space-4) var(--bpl-space-5);
+  background: color-mix(in srgb, var(--bpl-danger) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--bpl-danger) 30%, transparent);
+  border-radius: var(--bpl-radius-md);
+  margin-top: var(--bpl-space-4);
+}
+
+@media (max-width: 600px) {
+  .contact-form-section { padding: var(--bpl-space-16) var(--bpl-space-5); }
+  .contact-form__row--2col { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+  // ── Inject intent from URL query param ──
+  const intentField = document.getElementById('intent-field') as HTMLInputElement;
+  const params = new URLSearchParams(window.location.search);
+  const intent = params.get('intent');
+  if (intentField) {
+    intentField.value = intent && ['discovery', 'partnership', 'general'].includes(intent)
+      ? intent
+      : 'general';
+  }
+
+  // ── Form handling ──
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const successEl = document.getElementById('contact-form-success')!;
+  const errorEl = document.getElementById('contact-form-error')!;
+  const errorMsg = errorEl.querySelector('.bpl-error-msg') as HTMLSpanElement;
+  const submitBtn = document.getElementById('cf-submit') as HTMLButtonElement;
+  const btnText = submitBtn?.querySelector('.cf-btn-text') as HTMLSpanElement;
+  const btnLoading = submitBtn?.querySelector('.cf-btn-loading') as HTMLSpanElement;
+
+  function getTranslations() {
+    return {
+      errors: {
+        required: submitBtn?.dataset.errRequired ?? 'This field is required.',
+        emailInvalid: submitBtn?.dataset.errEmail ?? 'Please enter a valid email.',
+        server: submitBtn?.dataset.errServer ?? 'Something went wrong. Please try again later.',
+      },
+    };
+  }
+
+  function showFieldError(field: HTMLInputElement | HTMLTextAreaElement, message: string) {
+    field.classList.add('bpl-input--error');
+    const wrap = field.closest('.bpl-input-wrap, .bpl-textarea-wrap');
+    const existing = wrap?.querySelector('.bpl-error-msg');
+    if (existing) existing.remove();
+    const err = document.createElement('span');
+    err.className = 'bpl-error-msg';
+    err.textContent = message;
+    wrap?.appendChild(err);
+  }
+
+  function clearFieldError(field: HTMLInputElement | HTMLTextAreaElement) {
+    field.classList.remove('bpl-input--error');
+    const wrap = field.closest('.bpl-input-wrap, .bpl-textarea-wrap');
+    wrap?.querySelector('.bpl-error-msg')?.remove();
+  }
+
+  function validateEmail(email: string) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function setLoading(loading: boolean) {
+    if (!submitBtn) return;
+    submitBtn.disabled = loading;
+    if (btnText) btnText.style.display = loading ? 'none' : '';
+    if (btnLoading) btnLoading.style.display = loading ? '' : 'none';
+    form?.querySelectorAll('input, textarea').forEach(el => {
+      (el as HTMLElement).style.pointerEvents = loading ? 'none' : '';
+    });
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const t = getTranslations();
+    errorEl.style.display = 'none';
+    errorMsg.textContent = '';
+
+    const name = (document.getElementById('cf-name') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('cf-email') as HTMLInputElement).value.trim();
+    const company = (document.getElementById('cf-company') as HTMLInputElement).value.trim();
+    const message = (document.getElementById('cf-message') as HTMLTextAreaElement).value.trim();
+    const intentVal = (document.getElementById('intent-field') as HTMLInputElement).value;
+
+    const nameField = document.getElementById('cf-name') as HTMLInputElement;
+    const emailField = document.getElementById('cf-email') as HTMLInputElement;
+    const messageField = document.getElementById('cf-message') as HTMLTextAreaElement;
+
+    // Clear previous errors
+    [nameField, emailField, messageField].forEach(clearFieldError);
+
+    let hasError = false;
+
+    if (!name) {
+      showFieldError(nameField, t.errors.required);
+      hasError = true;
+    }
+    if (!email) {
+      showFieldError(emailField, t.errors.required);
+      hasError = true;
+    } else if (!validateEmail(email)) {
+      showFieldError(emailField, t.errors.emailInvalid);
+      hasError = true;
+    }
+    if (!message) {
+      showFieldError(messageField, t.errors.required);
+      hasError = true;
+    }
+
+    if (hasError) return;
+
+    setLoading(true);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, company, message, intent: intentVal }),
+      });
+
+      const data = await res.json() as { success: boolean; error?: string };
+
+      if (res.ok && data.success) {
+        form.style.display = 'none';
+        successEl.style.display = 'flex';
+      } else {
+        errorMsg.textContent = data.error ?? t.errors.server;
+        errorEl.style.display = 'block';
+      }
+    } catch {
+      errorMsg.textContent = t.errors.server;
+      errorEl.style.display = 'block';
+    } finally {
+      setLoading(false);
+    }
+  });
+</script>

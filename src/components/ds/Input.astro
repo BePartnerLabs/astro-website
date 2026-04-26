@@ -7,13 +7,19 @@ interface Props {
   name?: string
   type?: string
   id?: string
+  required?: boolean
   class?: string
 }
-const { label, hint, placeholder, value, name, type = 'text', id, class: className = '' } = Astro.props
+const { label, hint, placeholder, value, name, type = 'text', id, required = false, class: className = '' } = Astro.props
 const inputId = id ?? (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined)
 ---
 <div class={`bpl-input-wrap ${className}`}>
-  {label && <label class="bpl-input-label" for={inputId}>{label}</label>}
+  {label && (
+    <label class="bpl-input-label" for={inputId}>
+      {label}
+      {required && <span class="bpl-input-required" aria-hidden="true"> *</span>}
+    </label>
+  )}
   <input
     class="bpl-input"
     id={inputId}
@@ -21,6 +27,7 @@ const inputId = id ?? (label ? label.toLowerCase().replace(/\s+/g, '-') : undefi
     type={type}
     placeholder={placeholder}
     value={value}
+    required={required}
   />
   {hint && <span class="bpl-input-hint">{hint}</span>}
 </div>

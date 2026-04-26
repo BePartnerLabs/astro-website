@@ -1,4 +1,5 @@
 ---
+export const prerender = true;
 import Layout from '../../layouts/Layout.astro'
 import { useTranslations } from '../../i18n/index'
 import SiteHeader from '../../components/sections/SiteHeader.astro'
@@ -16,10 +17,10 @@ import SiteFooter from '../../components/sections/SiteFooter.astro'
 const lang = Astro.currentLocale ?? 'en'
 const t = useTranslations(lang)
 ---
-<Layout title="Be Partner Labs — Web performance partnerships" description={t.hero.eyebrow}>
+<Layout title="Be Partner Labs — Web performance partnerships" description={t.hero.eyebrow} lang={lang}>
   <SiteHeader t={t} lang={lang} />
   <main>
-    <SectionHero t={t} />
+    <SectionHero t={t} lang={lang} />
     <SectionLogos t={t} />
     <SectionServices t={t} />
     <SectionTestimonial t={t} />
@@ -27,7 +28,7 @@ const t = useTranslations(lang)
     <SectionProcess t={t} />
     <SectionFounders t={t} />
     <SectionFAQ t={t} />
-    <SectionFinalCTA t={t} />
+    <SectionFinalCTA t={t} lang={lang} />
   </main>
   <SiteFooter t={t} lang={lang} />
 </Layout>

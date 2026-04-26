@@ -2,9 +2,10 @@
 import type { Translations } from '../../i18n/es'
 import Button from '../ds/Button.astro'
 import BPLMark from '../ds/BPLMark.astro'
-interface Props { t: Translations }
-const { t } = Astro.props
+interface Props { t: Translations; lang: string }
+const { t, lang } = Astro.props
 const s = t.hero
+const contactHref = lang === 'es' ? '/contact?intent=discovery' : '/en/contact?intent=discovery'
 ---
 <section class="hero">
   <!-- Watermark -->
@@ -21,7 +22,7 @@ const s = t.hero
       <h1 class="hero__heading" set:html={s.headingHtml} />
       <p class="hero__body">{s.body}</p>
       <div class="hero__ctas">
-        <Button variant="primary" size="lg" href="#contact">{s.ctaPrimary}</Button>
+        <Button variant="primary" size="lg" href={contactHref}>{s.ctaPrimary}</Button>
         <Button variant="secondary" size="lg" href="#services">{s.ctaSecondary}</Button>
       </div>
       <div class="hero__stats">

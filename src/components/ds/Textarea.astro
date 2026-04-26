@@ -1,0 +1,42 @@
+---
+interface Props {
+  label?: string
+  hint?: string
+  placeholder?: string
+  value?: string
+  name?: string
+  id?: string
+  required?: boolean
+  class?: string
+  rows?: number
+}
+const {
+  label,
+  hint,
+  placeholder,
+  value,
+  name,
+  id,
+  required = false,
+  class: className = '',
+  rows = 5,
+} = Astro.props
+const inputId = id ?? (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined)
+---
+<div class={`bpl-textarea-wrap ${className}`}>
+  {label && (
+    <label class="bpl-textarea-label" for={inputId}>
+      {label}
+      {required && <span class="bpl-textarea-required" aria-hidden="true"> *</span>}
+    </label>
+  )}
+  <textarea
+    class="bpl-textarea"
+    id={inputId}
+    name={name}
+    placeholder={placeholder}
+    rows={rows}
+    required={required}
+  >{value ?? ''}</textarea>
+  {hint && <span class="bpl-textarea-hint">{hint}</span>}
+</div>

@@ -1,11 +1,12 @@
 ---
 import type { Translations } from '../../i18n/es'
 import BPLMark from '../ds/BPLMark.astro'
-interface Props { t: Translations }
-const { t } = Astro.props
+interface Props { t: Translations; lang: string }
+const { t, lang } = Astro.props
 const s = t.finalCta
+const contactHref = lang === 'es' ? '/contact?intent=partnership' : '/en/contact?intent=partnership'
 ---
-<section class="final-cta" id="contact">
+<section class="final-cta">
   <div class="final-cta__inner">
     <div class="final-cta__watermark" aria-hidden="true">
       <BPLMark size={400} variant="watermark" />
@@ -14,7 +15,7 @@ const s = t.finalCta
       <div class="final-cta__eyebrow">{s.eyebrow}</div>
       <h2 class="final-cta__title" set:html={s.title} />
       <p class="final-cta__sub">{s.sub}</p>
-      <a href="mailto:hola@bepartnerlabs.com" class="final-cta__btn">{s.button}</a>
+      <a href={contactHref} class="final-cta__btn">{s.button}</a>
     </div>
   </div>
 </section>

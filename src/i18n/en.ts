@@ -107,4 +107,33 @@ export const en: Translations = {
     toggleDark: 'Switch to dark mode',
     label: 'Theme',
   },
+  contact: {
+    eyebrow: 'Contact',
+    title: "Let's talk.",
+    sub: "Tell us what you need and we'll get back to you within 24 hours. No pitch deck, no commitment.",
+    fields: {
+      name: 'Full name',
+      email: 'Email address',
+      company: 'Company / Startup',
+      message: 'How can we help?',
+      intent: 'Intent',
+    },
+    placeholders: {
+      name: 'Your name',
+      email: 'you@email.com',
+      company: 'Optional',
+      message: 'Tell us what you need: project type, goals, timeline...',
+    },
+    button: 'Send',
+    sending: 'Sending...',
+    success: {
+      title: 'Message sent!',
+      sub: "We'll get back to you within 24 hours.",
+    },
+    errors: {
+      required: 'This field is required.',
+      emailInvalid: 'Please enter a valid email.',
+      server: 'Something went wrong. Please try again later.',
+    },
+  },
 };

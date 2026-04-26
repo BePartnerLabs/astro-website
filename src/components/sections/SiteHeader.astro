@@ -6,6 +6,7 @@ interface Props { t: Translations; lang: string }
 const { t, lang } = Astro.props
 const altLang = lang === 'es' ? 'en' : 'es'
 const altHref = lang === 'es' ? '/en' : '/'
+const contactHref = lang === 'es' ? '/contact?intent=general' : '/en/contact?intent=general'
 ---
 <header class="site-header">
   <div class="site-header__inner">
@@ -25,7 +26,7 @@ const altHref = lang === 'es' ? '/en' : '/'
     <div class="site-header__actions">
       <a href={altHref} class="site-header__lang">{altLang.toUpperCase()}</a>
       <ThemeToggle t={t} />
-      <a href="#contact" class="bpl-btn bpl-btn--primary bpl-btn--sm">{t.nav.cta}</a>
+      <a href={contactHref} class="bpl-btn bpl-btn--primary bpl-btn--sm">{t.nav.cta}</a>
     </div>
 
     <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
@@ -64,7 +65,7 @@ const altHref = lang === 'es' ? '/en' : '/'
   <div class="nav-drawer__footer">
     <ThemeToggle t={t} />
     <a href={altHref} class="nav-drawer__lang">{altLang.toUpperCase()}</a>
-    <a href="#contact" class="bpl-btn bpl-btn--primary" style="justify-content:center">{t.nav.cta}</a>
+    <a href={contactHref} class="bpl-btn bpl-btn--primary" style="justify-content:center">{t.nav.cta}</a>
   </div>
 </nav>
 
