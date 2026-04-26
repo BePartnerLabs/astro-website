@@ -6,17 +6,19 @@ import Textarea from '../ds/Textarea.astro'
 interface Props { t: Translations }
 const { t } = Astro.props
 const s = t.contact
+const formId = 'contact-form'
+const errorId = 'contact-form-error'
 ---
-<section class="contact-form-section">
+<section class="contact-form-section" aria-labelledby="contact-form-title">
   <div class="contact-form-section__inner">
     <div class="contact-form-section__header">
       <div class="bpl-eyebrow">{s.eyebrow}</div>
-      <h2 class="contact-form-section__title" set:html={s.title} />
+      <h2 id="contact-form-title" class="contact-form-section__title" set:html={s.title} />
       <p class="contact-form-section__sub">{s.sub}</p>
     </div>
 
     <div class="contact-form-section__form-wrap">
-      <form id="contact-form" class="contact-form" novalidate>
+      <form id={formId} class="contact-form" novalidate aria-describedby={errorId}>
         <input type="hidden" name="intent" id="intent-field" value="general" />
 
         <div class="contact-form__row contact-form__row--2col">
@@ -26,6 +28,7 @@ const s = t.contact
             placeholder={s.placeholders.name}
             required
             id="cf-name"
+            aria-describedby={errorId}
           />
           <Input
             label={s.fields.email}
@@ -34,6 +37,7 @@ const s = t.contact
             placeholder={s.placeholders.email}
             required
             id="cf-email"
+            aria-describedby={errorId}
           />
         </div>
 
@@ -83,7 +87,7 @@ const s = t.contact
         <p class="contact-form__success-sub">{s.success.sub}</p>
       </div>
 
-      <div id="contact-form-error" class="contact-form__error" style="display:none" role="alert">
+      <div id={errorId} class="contact-form__error" style="display:none" role="alert" aria-live="assertive">
         <span class="bpl-error-msg"></span>
       </div>
     </div>
