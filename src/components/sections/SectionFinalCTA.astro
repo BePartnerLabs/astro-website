@@ -24,11 +24,14 @@ const contactHref = lang === 'es' ? '/contact?intent=partnership' : '/en/contact
 .final-cta {
   background: var(--bpl-bg);
   padding: var(--bpl-space-35) var(--bpl-space-8);
+  --bpl-cta-bg:     light-dark(var(--bpl-ink), hsl(from var(--bpl-mint) h s calc(l * 0.4)));
+
 }
 .final-cta__inner {
   max-width: 1080px;
   margin: 0 auto;
-  background: var(--bpl-ink);
+  --_bg: var(--bpl-cta-bg, var(--bpl-ink));
+  background: var(--_bg);
   color: var(--bpl-bg);
   border-radius: 20px;
   padding: var(--bpl-space-20) var(--bpl-space-16);
@@ -61,7 +64,7 @@ const contactHref = lang === 'es' ? '/contact?intent=partnership' : '/en/contact
   margin: 0;
   color: inherit;
 }
-:global(.final-cta__title strong) { color: var(--bpl-mint); font-weight: 600; }
+:global(.final-cta__title strong) { color: var(--bpl-mint-ink); font-weight: 600; }
 .final-cta__sub {
   font: 400 18px/1.55 var(--bpl-font-sans);
   color: color-mix(in srgb, var(--bpl-bg) 75%, transparent);
