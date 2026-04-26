@@ -66,6 +66,7 @@
     --bpl-text-mono:    12px;
     --bpl-text-mono-sm: 11px;
     --bpl-text-eyebrow: 11px;
+    --bpl-text-section-title: clamp(32px, 5.5cqi, 64px);
 
     /* ── Spacing (4pt scale) ── */
     --bpl-space-unit: 4px;
@@ -104,6 +105,11 @@
     --bpl-dur-slow: 400ms;
   }
 }
+
+[data-theme="light"] { color-scheme: light; }
+[data-theme="dark"]  { color-scheme: dark; }
+
+@view-transition { navigation: auto; }
 
 @layer base {
   html, body {

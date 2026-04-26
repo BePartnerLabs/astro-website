@@ -102,4 +102,9 @@ export const en: Translations = {
     note: 'Be Partner Labs · Santiago · Bogotá · Mexico City',
     rights: '© 2026 Be Partner Labs. Honesty is not a value on a slide.',
   },
+  theme: {
+    toggleLight: 'Switch to light mode',
+    toggleDark: 'Switch to dark mode',
+    label: 'Theme',
+  },
 };

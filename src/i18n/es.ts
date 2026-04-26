@@ -100,6 +100,11 @@ export const es = {
     note: 'Be Partner Labs · Santiago · Bogotá · Ciudad de México',
     rights: '© 2026 Be Partner Labs. La honestidad no es un valor en un slide.',
   },
+  theme: {
+    toggleLight: 'Cambiar a modo claro',
+    toggleDark: 'Cambiar a modo oscuro',
+    label: 'Tema',
+  },
 };
 
 export type Translations = typeof es;
