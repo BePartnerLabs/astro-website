@@ -2,6 +2,7 @@
 import type { Translations } from '../../i18n/es'
 import Button from '../ds/Button.astro'
 import BPLMark from '../ds/BPLMark.astro'
+
 interface Props { t: Translations; lang: string }
 const { t, lang } = Astro.props
 const s = t.hero
@@ -20,21 +21,34 @@ const contactHref = lang === 'es' ? '/contact?intent=discovery' : '/en/contact?i
         {s.eyebrow}
       </div>
       <h1 class="hero__heading" set:html={s.headingHtml} />
-      <p class="hero__body">{s.body}</p>
-      <div class="hero__ctas">
-        <Button variant="primary" size="lg" href={contactHref}>{s.ctaPrimary}</Button>
-        <Button variant="secondary" size="lg" href="#services">{s.ctaSecondary}</Button>
+      <p class="hero__sub">{s.sub}</p>
+      <div class="hero__cta">
+        <Button href={contactHref} variant="primary" size="lg">
+          {s.cta}
+        </Button>
       </div>
       <div class="hero__stats">
-        {[[`45+`, t.stats.years], [`30+`, t.stats.projects], [`0`, t.stats.lockins]].map(([n, l]) => (
-          <div class="hero__stat">
-            <span class="hero__stat-n">{n}</span>
-            <span class="hero__stat-l">{l}</span>
-          </div>
-        ))}
+        <div class="hero__stat">
+          <span class="hero__stat-n">45+</span>
+          <span class="hero__stat-l">{s.stats.years}</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-n">30+</span>
+          <span class="hero__stat-l">{s.stats.projects}</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-n">0</span>
+          <span class="hero__stat-l">{s.stats.lockins}</span>
+        </div>
       </div>
     </div>
 
+    <!-- Large logo on right -->
+    <div class="hero__logo" aria-hidden="true">
+      <BPLMark size={280} />
+    </div>
+
+    <!-- Card disabled - will enable when real sprint data available
     <div class="hero__card" aria-label="Live sprint dashboard example">
       <div class="hero__card-head">
         <div>
@@ -64,6 +78,7 @@ const contactHref = lang === 'es' ? '/contact?intent=discovery' : '/en/contact?i
         {s.sprintWeeks.map(w => <span>{w}</span>)}
       </div>
     </div>
+    -->
   </div>
 </section>
 
@@ -77,124 +92,88 @@ const contactHref = lang === 'es' ? '/contact?intent=discovery' : '/en/contact?i
 .hero__watermark {
   position: absolute;
   right: -160px;
-  top: -80px;
-  width: 680px;
-  height: 680px;
-  opacity: 0.04;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
   pointer-events: none;
-  color: var(--bpl-mint);
 }
-.hero__watermark svg { width: 100%; height: 100%; }
 .hero__inner {
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: var(--bpl-space-14);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--bpl-space-16);
   align-items: center;
-  position: relative;
 }
 .hero__eyebrow {
+  font: 600 var(--bpl-text-eyebrow)/1 var(--bpl-font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bpl-mint-deep);
+  margin-bottom: var(--bpl-space-4);
   display: flex;
   align-items: center;
   gap: var(--bpl-space-2);
-  font: 600 11px/1 var(--bpl-font-mono);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--bpl-ink-3);
-  margin-bottom: var(--bpl-space-7);
 }
 .hero__dot {
   width: 6px;
   height: 6px;
-  border-radius: 999px;
-  background: var(--bpl-mint);
-  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--bpl-mint-deep);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 .hero__heading {
-  font: 600 var(--bpl-text-hero)/1 var(--bpl-font-sans);
-  letter-spacing: -0.04em;
+  font: 600 var(--bpl-text-hero)/1.02 var(--bpl-font-sans);
+  letter-spacing: -0.03em;
   color: var(--bpl-ink);
-  margin: 0;
+  margin: var(--bpl-space-6) 0 var(--bpl-space-6);
+  line-height: 1.02;
 }
-.hero__accent { color: var(--bpl-mint-deep); }
-:global(.hero__heading strong) { color: var(--bpl-mint-deep); font-weight: 600; }
-.hero__body {
-  margin: var(--bpl-space-7) 0 0;
+.hero__sub {
   font: 400 var(--bpl-text-body-lg)/1.55 var(--bpl-font-sans);
   color: var(--bpl-ink-2);
-  max-width: 520px;
+  margin: 0 0 var(--bpl-space-8);
+  max-width: 48ch;
 }
-.hero__ctas {
-  display: flex;
-  gap: var(--bpl-space-3);
-  margin-top: var(--bpl-space-9);
+.hero__cta {
+  margin-bottom: var(--bpl-space-10);
 }
 .hero__stats {
   display: flex;
   gap: var(--bpl-space-10);
-  margin-top: var(--bpl-space-12);
-  padding-top: var(--bpl-space-7);
-  border-top: 1px solid var(--bpl-line);
 }
-.hero__stat { display: flex; flex-direction: column; gap: var(--bpl-space-2); }
-.hero__stat-n { font: 600 32px/1 var(--bpl-font-sans); color: var(--bpl-ink); letter-spacing: -0.025em; }
-.hero__stat-l { font: 500 11px/1.4 var(--bpl-font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--bpl-ink-3); }
-
-/* Hero card */
-.hero__card {
-  background: var(--bpl-surface);
-  border: 1px solid var(--bpl-line);
-  border-radius: 16px;
-  padding: var(--bpl-space-8);
-  box-shadow: 0 8px 32px -8px color-mix(in srgb, var(--bpl-ink) 12%, transparent);
-}
-.hero__card-head {
+.hero__stat {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: var(--bpl-space-5);
+  flex-direction: column;
+  gap: 2px;
 }
-.hero__card-eyebrow {
-  font: 600 11px/1 var(--bpl-font-mono);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--bpl-ink-3);
-  margin-bottom: var(--bpl-space-2);
-}
-.hero__card-title {
-  font: 600 22px/1.2 var(--bpl-font-sans);
-  letter-spacing: -0.015em;
+.hero__stat-n {
+  font: 600 var(--bpl-text-h3)/1 var(--bpl-font-sans);
+  letter-spacing: -0.02em;
   color: var(--bpl-ink);
 }
-.hero__card-metric {
-  display: flex;
-  align-items: baseline;
-  gap: var(--bpl-space-3);
-  margin-bottom: var(--bpl-space-2);
+.hero__stat-l {
+  font: 500 var(--bpl-text-mono-sm)/1.4 var(--bpl-font-mono);
+  letter-spacing: 0.05em;
+  color: var(--bpl-ink-3);
 }
-.hero__card-value { font: 600 64px/1 var(--bpl-font-sans); color: var(--bpl-ink); letter-spacing: -0.03em; }
-.hero__card-unit { font: 500 22px/1 var(--bpl-font-sans); color: var(--bpl-ink-3); }
-.hero__card-delta { font: 500 13px/1 var(--bpl-font-mono); color: var(--bpl-mint-deep); margin-left: auto; }
-.hero__card-sub { font: 400 13px/1.5 var(--bpl-font-sans); color: var(--bpl-ink-3); margin: 0 0 var(--bpl-space-5); }
-.hero__spark { width: 100%; height: 120px; display: block; margin-bottom: var(--bpl-space-4); }
-.hero__card-weeks {
+.hero__logo {
   display: flex;
-  justify-content: space-between;
-  font: 500 10px/1 var(--bpl-font-mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--bpl-ink-4);
+  justify-content: center;
+  align-items: center;
 }
 
-@container page (max-width: 900px) {
-  .hero__inner { grid-template-columns: 1fr; }
-  .hero__card { display: none; }
-  .hero__body { max-width: 100%; }
+@media (max-width: 900px) {
+  .hero__inner { grid-template-columns: 1fr; gap: var(--bpl-space-10); }
+  .hero__logo { display: none; }
+  .hero__watermark { display: none; }
 }
-@container page (max-width: 680px) {
+@media (max-width: 600px) {
   .hero { padding: var(--bpl-space-12) var(--bpl-space-5) var(--bpl-space-16); }
-  .hero__stats { gap: var(--bpl-space-6); flex-wrap: wrap; }
-  .hero__ctas { flex-direction: column; }
+  .hero__stats { flex-direction: column; gap: var(--bpl-space-4); }
 }
 </style>
