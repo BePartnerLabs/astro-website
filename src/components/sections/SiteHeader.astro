@@ -41,7 +41,7 @@ const contactHref = lang === 'es' ? '/contact?intent=general' : '/en/contact?int
 
 <div id="nav-backdrop" class="nav-backdrop"></div>
 
-<nav id="mobile-drawer" class="nav-drawer" aria-label="Mobile menu" aria-hidden="true">
+<nav id="mobile-drawer" class="nav-drawer" aria-label="Mobile menu" aria-hidden="true" style="transform:translateX(100%)">
   <div class="nav-drawer__head">
     <span class="nav-drawer__logo">
       <BPLMark size={18} />
@@ -216,7 +216,7 @@ const contactHref = lang === 'es' ? '/contact?intent=general' : '/en/contact?int
   background: var(--bpl-bg);
   border-radius: 20px 0 0 20px;
   border-left: 1px solid var(--bpl-line);
-  box-shadow: -32px 0 80px -8px color-mix(in srgb, var(--bpl-ink) 25%, transparent);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   padding: var(--bpl-space-6);
@@ -226,6 +226,7 @@ const contactHref = lang === 'es' ? '/contact?intent=general' : '/en/contact?int
 }
 :global(.nav-drawer.is-open) {
   transform: translateX(0);
+  box-shadow: -32px 0 80px -8px color-mix(in srgb, var(--bpl-ink) 25%, transparent);
 }
 .nav-drawer__head {
   display: flex;
