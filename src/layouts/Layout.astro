@@ -52,6 +52,7 @@ const twitterHandle = '@BePartnerLabs'
     <meta property="og:image" content={image.startsWith('http') ? image : `${siteUrl}${image}`} />
     <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
     <title>{title}</title>
+    <link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
     {description && <meta name="description" content={description} />}
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="apple-intelligence-supports-summarization" content="true" />
