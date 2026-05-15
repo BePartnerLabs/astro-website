@@ -90,6 +90,21 @@ const twitterHandle = '@BePartnerLabs'
         navigator.serviceWorker.register('/sw.js');
       }
     </script>
+    <script is:inline>
+      (function () {
+        var milestones = [30, 60, 120];
+        var fired = {};
+        milestones.forEach(function (seconds) {
+          setTimeout(function () {
+            if (fired[seconds]) return;
+            fired[seconds] = true;
+            if (typeof gtag === 'function') {
+              gtag('event', 'dwell_time', { seconds: seconds });
+            }
+          }, seconds * 1000);
+        });
+      })();
+    </script>
   </body>
 </html>
 
