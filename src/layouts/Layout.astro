@@ -92,6 +92,66 @@ const twitterHandle = '@BePartnerLabs'
     </script>
     <script is:inline>
       (function () {
+        var visibleSince = {};
+        var accumulated = {};
+
+        function flush(name) {
+          if (!visibleSince[name]) return;
+          var elapsed = Math.round((Date.now() - visibleSince[name]) / 1000);
+          accumulated[name] = (accumulated[name] || 0) + elapsed;
+          visibleSince[name] = null;
+        }
+
+        function fireEvent(name) {
+          var total = accumulated[name] || 0;
+          if (total < 1) return;
+          if (typeof gtag === 'function') {
+            gtag('event', 'section_engagement', { section_name: name, seconds_visible: total });
+          }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+          var sections = document.querySelectorAll('[data-section]');
+          if (!sections.length || !('IntersectionObserver' in window)) return;
+
+          var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              var name = entry.target.getAttribute('data-section');
+              if (entry.isIntersecting) {
+                visibleSince[name] = Date.now();
+              } else {
+                flush(name);
+              }
+            });
+          }, { threshold: 0.25 });
+
+          sections.forEach(function (el) { observer.observe(el); });
+
+          document.addEventListener('visibilitychange', function () {
+            if (document.hidden) {
+              sections.forEach(function (el) { flush(el.getAttribute('data-section')); });
+            } else {
+              sections.forEach(function (el) {
+                var name = el.getAttribute('data-section');
+                var rect = el.getBoundingClientRect();
+                var inView = rect.top < window.innerHeight && rect.bottom > 0;
+                if (inView) visibleSince[name] = Date.now();
+              });
+            }
+          });
+
+          window.addEventListener('beforeunload', function () {
+            sections.forEach(function (el) {
+              var name = el.getAttribute('data-section');
+              flush(name);
+              fireEvent(name);
+            });
+          });
+        });
+      })();
+    </script>
+    <script is:inline>
+      (function () {
         var milestones = [30, 60, 120];
         var fired = {};
         milestones.forEach(function (seconds) {

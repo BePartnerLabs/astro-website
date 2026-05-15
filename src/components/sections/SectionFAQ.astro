@@ -6,7 +6,7 @@ const { t } = Astro.props
 const s = t.faq
 const schema = buildFAQPageSchema(s.items)
 ---
-<section class="faq" id="faq">
+<section class="faq" id="faq" data-section="faq">
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   <div class="faq__inner">
     <div class="faq__eyebrow">{s.eyebrow}</div>
